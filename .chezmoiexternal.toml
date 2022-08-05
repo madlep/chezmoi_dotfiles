@@ -9,3 +9,9 @@
     url = "https://github.com/romkatv/powerlevel10k/archive/v1.15.0.tar.gz"
     exact = true
     stripComponents = 1
+[".tmux/plugins/tpm"]
+    type ="archive"
+    url = "https://github.com/tmux-plugins/tpm/archive/refs/tags/v3.0.0.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
