@@ -1,0 +1,31 @@
+[alias]
+	br = branch -a
+	co = checkout
+	st = status
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit
+[apply]
+	ignorewhitespace = change
+[color]
+	branch = auto
+	grep = auto
+	diff = auto
+	interactive = auto
+	status = auto
+[core]
+	editor = mate -w
+	whitespace = tab-in-indent,tabwidth=2
+	excludesFile = /Users/juliandoherty/.gitignore_global
+[user]
+	email = madlep@madlep.com
+	name = Julian Doherty
+[github]
+	user = madlep
+[push]
+	default = simple
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[init]
+	defaultBranch = main
