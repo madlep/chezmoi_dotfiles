@@ -36,7 +36,7 @@ vim.opt.sidescrolloff = 8                       -- keep left/right context
 vim.opt.guifont = "Hack Nerd Font Mono:h13"     -- font to use when running in a GUI rather than CLI
 vim.opt.shortmess:append "c"                    -- don't show short messages for insert completions menu
 vim.opt.whichwrap:append "<,>,[,],h,l"          -- allow navigation keys to wrap at end of line etc
-vim.opt.iskeyword:append "-"                    -- not sure what this does
+vim.opt.iskeyword:append "-"                    -- match on words with a dash to allow vim motions over the dash
 vim.opt.list = true                             -- enable tab/eol/trail etc chars
 vim.opt.listchars:append {                      -- chars to show if present
   tab = "▸ ",
