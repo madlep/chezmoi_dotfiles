@@ -14,4 +14,5 @@ brew "wget"
 brew "z"
 brew "zsh"
 brew "zsh-completions"
+brew "ripgrep"
 
