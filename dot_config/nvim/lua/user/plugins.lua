@@ -25,6 +25,11 @@ local plugins = function(use)
   use "neovim/nvim-lspconfig"
   use "williamboman/nvim-lsp-installer" -- install/manage language servers from within neovim UI
   use "jose-elias-alvarez/null-ls.nvim" -- used by formatters/linters to hook into Neovim's LSP
+
+  use {"nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } }
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+
 end
 ------------------------
 -- ...Plugins end here
