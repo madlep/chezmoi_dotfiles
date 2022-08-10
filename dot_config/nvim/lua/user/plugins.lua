@@ -7,6 +7,19 @@ local plugins = function(use)
   use "nvim-lua/plenary.nvim" -- useful lua functions used by everything
   use "arcticicestudio/nord-vim" -- current theme
   use "alexghergh/nvim-tmux-navigation" -- use <C-h><C-j> etc to move between tmux windows and neovim
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use "p00f/nvim-ts-rainbow" -- rainbow open/close markers for brackets etc
+  use "windwp/nvim-autopairs" -- auto close brackets etc
+  use "lewis6991/gitsigns.nvim" -- show change status in left margin
+  use "akinsho/bufferline.nvim" -- nicer buffer list at top
+  use "moll/vim-bbye" -- make buffer/window management less janky
+  use "nvim-lualine/lualine.nvim" -- nicer line at bottom of the screen
+  use "lewis6991/impatient.nvim" -- optimise loading of lua plugins at startup
+  use "lukas-reineke/indent-blankline.nvim" -- show vertical tab markers for indentation level
+
+  -- nvim-tree
+  use "kyazdani42/nvim-web-devicons"
+  use "kyazdani42/nvim-tree.lua"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- completions
@@ -24,12 +37,12 @@ local plugins = function(use)
   -- Language Server Protocol
   use "neovim/nvim-lspconfig"
   use "williamboman/nvim-lsp-installer" -- install/manage language servers from within neovim UI
-  use "jose-elias-alvarez/null-ls.nvim" -- used by formatters/linters to hook into Neovim's LSP
+  use "jose-elias-alvarez/null-ls.nvim" -- used by external CLI formatters/linters to hook into Neovim's LSP
 
-  use {"nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } }
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
-  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-
+  -- Telescope
+  use { "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } }
+  use { 'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 end
 ------------------------
 -- ...Plugins end here
@@ -42,7 +55,8 @@ end
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path,})
+  PACKER_BOOTSTRAP = fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim",
+    install_path, })
   print("Installing packer. Close and reopen Neovim...")
   vim.cmd([[packadd packer.nvim]])
 end
