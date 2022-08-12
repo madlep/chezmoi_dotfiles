@@ -16,22 +16,15 @@ null_ls.setup({
   sources = {
     actions.shellcheck,
 
-    diagnostics.credo,
-    diagnostics.codespell,
-    diagnostics.flake8,
+    --diagnostics.codespell,
     diagnostics.jsonlint,
     diagnostics.markdownlint,
     diagnostics.proselint,
-    diagnostics.rubocop,
-    diagnostics.semgrep,
     diagnostics.shellcheck,
     diagnostics.yamllint,
 
-    formatting.black.with({ extra_args = { "--fast" } }),
     formatting.jq,
-    formatting.mix,
     formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
-    formatting.rubocop,
   },
   -- on_attach = function(client, bufnr)
   --   if client.supports_method("textDocument/formatting") then

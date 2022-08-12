@@ -1,3 +1,11 @@
+-- default servers we always want
+local servers = {
+  "jsonls",
+  "sumneko_lua",
+  "solargraph",
+  "elixirls",
+}
+
 local installer_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
 if not installer_ok then
   return
@@ -8,9 +16,6 @@ if not config_ok then
   print("couldn't find lspconfig")
   return
 end
-
--- default servers we always want
-local servers = { "jsonls", "sumneko_lua" }
 
 lsp_installer.setup({
   ensure_installed = servers,
