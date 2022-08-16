@@ -17,6 +17,7 @@ local plugins = function(use)
   use "lewis6991/impatient.nvim" -- optimise loading of lua plugins at startup
   use "lukas-reineke/indent-blankline.nvim" -- show vertical tab markers for indentation level
   use "folke/trouble.nvim" -- report workspace wide diagnostics/warnings/errors
+  use "f-person/git-blame.nvim" -- show gitblame
 
   -- nvim-tree
   use "kyazdani42/nvim-web-devicons"

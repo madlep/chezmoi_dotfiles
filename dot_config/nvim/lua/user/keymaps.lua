@@ -31,6 +31,8 @@ keymap("n", "<Down>", ":m .+1<CR>", opts)
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<leader>qq", ":Bdelete<CR>", opts)
+keymap("n", "<leader>bt", ":BufferLineTogglePin<CR>", opts)
 
 -- clear search highlight
 keymap("n", "<leader>,/", ":nohlsearch<CR>", opts)
@@ -64,6 +66,7 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 -- Telescope
 keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
 keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
+keymap("n", "<leader>fa", "<cmd>lua require('telescope.builtin').grep_string()<cr>", opts)
 keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
 keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
 
