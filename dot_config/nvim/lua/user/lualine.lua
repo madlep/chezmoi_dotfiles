@@ -3,8 +3,8 @@ if not status_ok then
   return
 end
 
-local hide_in_width = function()
-  return vim.fn.winwidth(0) > 80
+local show_in_width = function()
+  return vim.fn.winwidth(0) > 100
 end
 
 local diagnostics = {
@@ -21,7 +21,7 @@ local diff = {
   "diff",
   colored = true,
   symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-  cond = hide_in_width
+  cond = show_in_width,
 }
 
 local mode = {
@@ -37,18 +37,20 @@ local filetype = {
   colored = true,
   icons_enabled = true,
   icon = { align = 'right' },
+  cond = show_in_width,
 }
 
 local branch = {
   "branch",
   icons_enabled = true,
   icon = "",
-  cond = hide_in_width,
+  cond = show_in_width,
 }
 
 local location = {
   "location",
   padding = 0,
+  cond = show_in_width,
 }
 
 local filename = {
