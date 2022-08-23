@@ -1,13 +1,7 @@
 -- https://raw.githubusercontent.com/LunarVim/Neovim-from-scratch/05-completion/lua/user/cmp.lua
-local cmp_status_ok, cmp = pcall(require, "cmp")
-if not cmp_status_ok then
-  return
-end
+local cmp = require("cmp")
 
-local snip_status_ok, luasnip = pcall(require, "luasnip")
-if not snip_status_ok then
-  return
-end
+local luasnip = require("luasnip")
 
 require("luasnip/loaders/from_vscode").lazy_load()
 
@@ -111,13 +105,14 @@ cmp.setup {
       return vim_item
     end,
   },
-  sources = {
+  sources = cmp.config.sources({
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
     { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
-  },
+    { name = "nvim_lsp_signature_help" },
+  }),
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,

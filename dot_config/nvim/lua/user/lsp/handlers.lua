@@ -1,6 +1,23 @@
 local M = {}
 
--- TODO: backfill this to template
+-- work around due to neovim not having any way to hide codelens (ie Elixir spec suggestions)
+M.codelens_enabled = true
+
+M.toggle_codelens = function()
+  M.codelens_enabled = not M.codelens_enabled
+  vim.lsp.codelens.refresh()
+end
+
+local old_display = vim.lsp.codelens.display
+vim.lsp.codelens.display = function(lenses, bufnr, client_id)
+  if not M.codelens_enabled then
+    local ns = vim.lsp.codelens.__namespaces[client_id]
+    vim.api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
+  else
+    old_display(lenses, bufnr, client_id)
+  end
+end
+
 M.setup = function()
   local signs = {
     { name = "DiagnosticSignError", text = "" },
@@ -14,9 +31,8 @@ M.setup = function()
   end
 
   local config = {
-    -- disable virtual text
-    virtual_text = true,
-    -- show signs
+    virtual_text = false,
+    source = true,
     signs = {
       active = signs,
     },
@@ -47,13 +63,7 @@ M.setup = function()
 end
 
 local function lsp_highlight_document(client)
-  -- Set autocommands conditional on server_capabilities
-  local status_ok, illuminate = pcall(require, "illuminate")
-  if not status_ok then
-    return
-  end
-  illuminate.on_attach(client)
-  -- end
+  require("illuminate").on_attach(client)
 end
 
 local function lsp_keymaps(bufnr)
@@ -68,35 +78,34 @@ local function lsp_keymaps(bufnr)
   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-  vim.api.nvim_buf_set_keymap(
-    bufnr,
-    "n",
-    "gl",
-    '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
-    opts
-  )
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cl", "<cmd>lua vim.lsp.codelens.run()<CR>", opts) -- apply elixir specs etc
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ct", "<cmd>lua require('user.lsp.handlers').toggle_codelens()<CR>",
+    opts)
   vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format{async=true}' ]])
 end
 
 M.on_attach = function(client, bufnr)
-  -- vim.notify(client.name .. " starting...")
-  -- TODO: refactor this into a method that checks if string in list
-  if client.name == "tsserver" then
-    client.resolved_capabilities.document_formatting = false
-  end
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
+  -- require("virtualtypes").on_attach(client, bufnr)
+  if client.resolved_capabilities.hover then
+    vim.notify("setting up hover")
+    vim.cmd [[
+      augroup lsp_keyword_hover
+        autocmd! * <buffer>
+        autocmd CursorHold * lua vim.lsp.buf.hover()
+      augroup END
+    ]]
+  else
+    vim.notify("no hover")
+  end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_ok then
-  return
-end
-
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+M.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 return M

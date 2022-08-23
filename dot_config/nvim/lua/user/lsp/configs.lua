@@ -6,20 +6,12 @@ local servers = {
   "elixirls",
 }
 
-local installer_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
-if not installer_ok then
-  return
-end
-
-local config_ok, lspconfig = pcall(require, "lspconfig")
-if not config_ok then
-  print("couldn't find lspconfig")
-  return
-end
-
+local lsp_installer = require("nvim-lsp-installer")
 lsp_installer.setup({
   ensure_installed = servers,
 })
+
+local lspconfig = require("lspconfig")
 
 for _, server in pairs(servers) do
   local opts = {

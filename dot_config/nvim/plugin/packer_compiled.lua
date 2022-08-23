@@ -94,6 +94,11 @@ _G.packer_plugins = {
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["cmp-nvim-lsp-signature-help"] = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp-signature-help",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp-signature-help"
+  },
   ["cmp-nvim-lua"] = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua",
@@ -124,6 +129,11 @@ _G.packer_plugins = {
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["guihua.lua"] = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/guihua.lua",
+    url = "https://github.com/ray-x/guihua.lua"
+  },
   ["impatient.nvim"] = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/impatient.nvim",
@@ -134,10 +144,20 @@ _G.packer_plugins = {
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
+  ["lsp_lines.nvim"] = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/lsp_lines.nvim",
+    url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  ["navigator.lua"] = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/navigator.lua",
+    url = "https://github.com/ray-x/navigator.lua"
   },
   ["nord-vim"] = {
     loaded = true,
@@ -184,6 +204,11 @@ _G.packer_plugins = {
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["nvim-treesitter-refactor"] = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/nvim-treesitter-refactor",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-refactor"
+  },
   ["nvim-ts-rainbow"] = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow",
@@ -223,6 +248,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/vim-bbye",
     url = "https://github.com/moll/vim-bbye"
+  },
+  ["vim-illuminate"] = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/vim-illuminate",
+    url = "https://github.com/RRethy/vim-illuminate"
+  },
+  ["virtual-types.nvim"] = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/virtual-types.nvim",
+    url = "https://github.com/jubnzv/virtual-types.nvim"
   }
 }
 
