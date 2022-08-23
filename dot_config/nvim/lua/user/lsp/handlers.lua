@@ -81,27 +81,28 @@ local function lsp_keymaps(bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cl", "<cmd>lua vim.lsp.codelens.run()<CR>", opts) -- apply elixir specs etc
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ct", "<cmd>lua require('user.lsp.handlers').toggle_codelens()<CR>",
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>clr", "<cmd>lua vim.lsp.codelens.run()<CR>", opts) -- code lens resolve. apply elixir specs etc
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cl", "<cmd>lua require('user.lsp.codelens').toggle_codelens()<CR>",
+    -- show/hide code lens
     opts)
   vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format{async=true}' ]])
 end
 
-M.on_attach = function(client, bufnr)
-  lsp_keymaps(bufnr)
-  lsp_highlight_document(client)
-  -- require("virtualtypes").on_attach(client, bufnr)
+local function lsp_hover(client)
   if client.resolved_capabilities.hover then
-    vim.notify("setting up hover")
     vim.cmd [[
       augroup lsp_keyword_hover
         autocmd! * <buffer>
         autocmd CursorHold * lua vim.lsp.buf.hover()
       augroup END
     ]]
-  else
-    vim.notify("no hover")
   end
+end
+
+M.on_attach = function(client, bufnr)
+  lsp_keymaps(bufnr)
+  lsp_highlight_document(client)
+  lsp_hover(client)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
