@@ -4,8 +4,8 @@
 -- Plugins start here...
 ------------------------
 local plugins = function(use)
+  -- general
   use "nvim-lua/plenary.nvim" -- useful lua functions used by everything
-  use "arcticicestudio/nord-vim" -- current theme
   use "alexghergh/nvim-tmux-navigation" -- use <C-h><C-j> etc to move between tmux windows and neovim
   use "p00f/nvim-ts-rainbow" -- rainbow open/close markers for brackets etc
   use "windwp/nvim-autopairs" -- auto close brackets etc
@@ -19,6 +19,11 @@ local plugins = function(use)
   use "f-person/git-blame.nvim" -- show gitblame
   use "RRethy/vim-illuminate" -- auto highlight words using LSP
   use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
+  use "folke/which-key.nvim"
+
+  -- themes
+  use "rmehri01/onenord.nvim" -- current theme
+  use "arcticicestudio/nord-vim"
 
   -- nvim-tree
   use "kyazdani42/nvim-web-devicons"

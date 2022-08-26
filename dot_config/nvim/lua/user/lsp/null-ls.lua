@@ -5,6 +5,9 @@ local actions = null_ls.builtins.code_actions
 local diagnostics = null_ls.builtins.diagnostics
 local formatting = null_ls.builtins.formatting
 
+-- be careful adding functionality provided by a non-LSP util via null-ls, and
+-- the same thing from a proper LSP server, as things get weird and/or have
+-- repeated diagnostics etc
 null_ls.setup({
   debug = false,
   sources = {

@@ -1,6 +1,6 @@
-local opts = { noremap = true, silent = true }
+local wk = require("which-key") -- to register leader key labels for which key help
 
-local term_opts = { silent = true }
+local opts = { noremap = true, silent = true }
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
@@ -10,77 +10,77 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
-
--- Normal --
+-- misc overrides
+keymap("n", "z=", "<cmd>:Telescope spell_suggest<CR>", opts)
 
 -- indent/unindent
 keymap("n", "<Left>", "<<", opts)
 keymap("n", "<Right>", ">>", opts)
-
--- Move text up and down
-keymap("n", "<Up>", ":m .-2<CR>", opts)
-keymap("n", "<Down>", ":m .+1<CR>", opts)
-
--- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
-keymap("n", "<leader>qq", ":Bdelete<CR>", opts)
-keymap("n", "<leader>bt", ":BufferLineTogglePin<CR>", opts)
-
--- clear search highlight
-keymap("n", "<leader>,/", ":nohlsearch<CR>", opts)
-
--- Insert --
--- Press jk fast leave insert mode
-keymap("i", "jk", "<ESC>", opts)
-
--- Visual --
--- indent/unindent
 keymap("v", "<Left>", "<gv", opts)
 keymap("v", "<right>", ">gv", opts)
 
 -- Move text up and down
+keymap("n", "<Up>", ":m .-2<CR>", opts)
+keymap("n", "<Down>", ":m .+1<CR>", opts)
 keymap("v", "<Up>", ":m .-2<CR>", opts)
 keymap("v", "<Down>", ":m .+1<CR>", opts)
 keymap("v", "p", '"_dP', opts)
-
--- Visual Block --
--- Move text up and down
 keymap("x", "<Up>", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<Down>", ":move '>+1<CR>gv-gv", opts)
 
--- Terminal --
--- Better terminal navigation
-keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
-keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
-keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
-keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+-- buffers
+keymap("n", "<S-l>", ":bnext<CR>", opts)
+keymap("n", "<S-h>", ":bprevious<CR>", opts)
+wk.register({
+  name = "Buffer",
+  b = { ":Bdelete<CR>", "Delete buffer" },
+  t = { ":BufferLineTogglePin<CR>", "Pin buffer" }
+}, { prefix = "<leader>b" })
 
--- Telescope
-keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
-keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
-keymap("n", "<leader>fa", "<cmd>lua require('telescope.builtin').grep_string()<cr>", opts)
-keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
-keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
+-- searching
+wk.register({
+  name = "Find",
+  f = { "<cmd>lua require('telescope.builtin').find_files()<CR>", "Find files by name" },
+  g = { "<cmd>lua require('telescope.builtin').live_grep()<CR>", "Search" },
+  a = { "<cmd>lua require('telescope.builtin').grep_string()<CR>", "Search string under cursor" },
+  b = { "<cmd>lua require('telescope.builtin').buffers()<CR>", "Search buffers" },
+  r = { "<cmd>lua require('telescope.builtin').resume()<CR>", "Resume previous" },
+  ["/"] = { ":nohlsearch<CR>", "Clear search highlights" },
+}, { prefix = "<leader>f" })
+
 
 -- nvim tree
-keymap("n", "<leader>nt", ":NvimTreeToggle<CR>", opts)
-keymap("n", "<leader>nf", ":NvimTreeFindFile<CR>", opts)
+wk.register({
+  name = "File tree",
+  t = { ":NvimTreeToggle<CR>", "Toggle Tree" },
+  f = { ":NvimTreeFindFile<CR>", "Focus on current file" }
+}, { prefix = "<leader>t" })
 
--- Trouble
-keymap("n", "<leader>xx", "<cmd>Trouble<cr>", opts)
-keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", opts)
-keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", opts)
-keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", opts)
-keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", opts)
-keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", opts)
+-- diagnostics
+wk.register({
+  name = "diagnostics",
+  d = { "<cmd>TroubleToggle document_diagnostics<CR>", "Document diagnostics" },
+  w = { "<cmd>TroubleToggle workspace_diagnostics<CR>", "Workspace diagnostics" },
+  x = { "<cmd>TroubleToggle<cr>", "Toggle trouble list" },
+}, { prefix = "<leader>x" })
 
--- lsp lines
-keymap("n", "<leader>ll", "<cmd>lua require('lsp_lines').toggle()<cr>", opts)
+return {
+  -- keymaps that are set up when a language server is attached to the buffer from user.lsp.handler
+  lsp_keymaps = function(bufnr)
+    wk.register({
+      name = "language server",
+      d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Goto definition" },
+      r = { "<cmd>lua require('telescope.builtin').lsp_references()<CR>", "Show references" },
+      h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Show hover info" },
+      D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Goto declaration" },
+      i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto implementation" },
+      s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help" },
+      l = { "<cmd>lua require('lsp_lines').toggle()<CR>", "Toggle diagnostics" },
+      c = {
+        name = "Codelens",
+        r = { "<cmd>lua vim.lsp.codelens.run()<CR>", "Run codelens" },
+        t = { "<cmd>lua require('user.lsp.codelens').toggle()<CR>", "Toggle codelens" }
+      },
+    }, { prefix = "<leader>l", buffer = bufnr })
+  end
+}
