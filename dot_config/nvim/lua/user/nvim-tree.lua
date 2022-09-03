@@ -16,7 +16,7 @@ nvim_tree.setup {
     update_cwd = true,
   },
   renderer = {
-    root_folder_modifier = ":t",
+    root_folder_modifier = ":~",
     icons = {
       glyphs = {
         default = "",
@@ -54,6 +54,7 @@ nvim_tree.setup {
     },
   },
   view = {
+    adaptive_size = true,
     width = 30,
     height = 30,
     side = "left",

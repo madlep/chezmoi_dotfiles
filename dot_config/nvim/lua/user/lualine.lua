@@ -43,6 +43,7 @@ local filetype = {
 local branch = {
   "branch",
   icons_enabled = true,
+  colored = true,
   icon = "",
   cond = show_in_width,
 }
@@ -67,6 +68,12 @@ local filename = {
   }
 }
 
+local gb = require("gitblame")
+local gitblame = {
+  gb.get_current_blame_text,
+  cond = function() return gb.is_blame_text_available() and show_in_width() end
+}
+
 lualine.setup({
   options = {
     icons_enabled = true,
@@ -80,9 +87,9 @@ lualine.setup({
     lualine_a = { filename },
     lualine_b = { filetype },
     lualine_c = { diagnostics, branch, diff },
-    lualine_x = { mode },
-    lualine_y = { location },
-    lualine_z = { "progress" },
+    lualine_x = { gitblame, branch },
+    lualine_y = { mode },
+    lualine_z = { location, "progress" },
   },
   inactive_sections = {
     lualine_a = {},

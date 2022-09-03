@@ -1,6 +1,4 @@
-local bufferline = require("bufferline")
-
-bufferline.setup {
+require("bufferline").setup {
   options = {
     -- mouse actions
     close_command = "Bdelete! %d", -- use vim-bbye so buffers closing doesn't break layout

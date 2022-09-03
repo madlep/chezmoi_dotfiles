@@ -1,4 +1,5 @@
-local git_blame_ok, _ = pcall(require, "gitblame")
-if not git_blame_ok then
-  return
-end
+require("gitblame")
+vim.g.gitblame_ignored_filetypes = {
+  "Outline", -- lsp symbol outline list
+  "NvimTree"
+}

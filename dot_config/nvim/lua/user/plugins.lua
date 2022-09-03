@@ -20,6 +20,9 @@ local plugins = function(use)
   use "RRethy/vim-illuminate" -- auto highlight words using LSP
   use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
   use "folke/which-key.nvim"
+  use "chrisbra/csv.vim"
+  use "kevinhwang91/nvim-bqf"
+  use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
 
   -- themes
   use "rmehri01/onenord.nvim" -- current theme
@@ -48,12 +51,13 @@ local plugins = function(use)
   use "williamboman/nvim-lsp-installer" -- install/manage language servers from within neovim UI
   use "jose-elias-alvarez/null-ls.nvim" -- used by external CLI formatters/linters to hook into Neovim's LSP
   use "jubnzv/virtual-types.nvim" -- show virtual types hint
-  use({ 'ray-x/navigator.lua',
-    requires = { { 'ray-x/guihua.lua', run = 'cd lua/fzy && make' }, { 'neovim/nvim-lspconfig' }, }, })
+  use "simrat39/symbols-outline.nvim" -- list functions/modules etc for buffer in side window
 
   -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use "nvim-treesitter/nvim-treesitter-refactor"
+  -- use "nvim-treesitter/nvim-treesitter-context"
+  use { "madlep/nvim-treesitter-context", branch = "add-elixir-default-type-patterns" } -- use nvim-treesitter repo when https://github.com/nvim-treesitter/nvim-treesitter-context/pull/158 merged
 
   -- Telescope
   use { "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } }

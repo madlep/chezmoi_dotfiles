@@ -64,6 +64,16 @@ wk.register({
   x = { "<cmd>TroubleToggle<cr>", "Toggle trouble list" },
 }, { prefix = "<leader>x" })
 
+-- git
+wk.register({
+  name = "git",
+  t = { "<cmd>:GitBlameToggle<CR>", "toggle blame" },
+  o = { "<cmd>:GitBlameOpenCommitURL<CR>", "open commit in browser" },
+  y = { "<cmd>:GitBlameCopySHA<CR>", "copy commit SHA to clipboard" },
+  c = { "<cmd>:Telescope git_commits<CR>", "list repo git commits" },
+  b = { "<cmd>:Telescope git_bcommits<CR>", "list buffer git commits" },
+}, { prefix = "<leader>g" })
+
 return {
   -- keymaps that are set up when a language server is attached to the buffer from user.lsp.handler
   lsp_keymaps = function(bufnr)
@@ -75,7 +85,8 @@ return {
       D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Goto declaration" },
       i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto implementation" },
       s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help" },
-      l = { "<cmd>lua require('lsp_lines').toggle()<CR>", "Toggle diagnostics" },
+      l = { "<cmd>lua require('lsp_lines').toggle()<CR>", "Diagnostics toggle" },
+      o = { "<cmd>:SymbolsOutline<CR>", "Outline toggle" },
       c = {
         name = "Codelens",
         r = { "<cmd>lua vim.lsp.codelens.run()<CR>", "Run codelens" },
