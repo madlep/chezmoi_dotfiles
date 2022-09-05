@@ -45,6 +45,11 @@ wk.register({
   a = { "<cmd>lua require('telescope.builtin').grep_string()<CR>", "Search string under cursor" },
   b = { "<cmd>lua require('telescope.builtin').buffers()<CR>", "Search buffers" },
   r = { "<cmd>lua require('telescope.builtin').resume()<CR>", "Resume previous" },
+  s = {
+    name = "spectre (search/replace)",
+    g = { "<cmd>lua require('spectre').open()<CR>", "Global search/replace" },
+    f = { "<cmd>lua require('spectre').open_file_search()<CR>", "File search/replace" }
+  },
   ["/"] = { ":nohlsearch<CR>", "Clear search highlights" },
 }, { prefix = "<leader>f" })
 

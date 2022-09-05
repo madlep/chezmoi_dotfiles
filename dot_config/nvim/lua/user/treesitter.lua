@@ -25,5 +25,5 @@ configs.setup {
     max_file_lines = nil, -- disable for files longer than
     -- colors = {}, -- table of hex strings
     -- termcolors = {} -- table of color name strings
-  }
+  },
 }

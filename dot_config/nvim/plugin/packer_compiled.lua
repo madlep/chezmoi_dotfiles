@@ -196,6 +196,11 @@ _G.packer_plugins = {
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-spectre"] = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/nvim-spectre",
+    url = "https://github.com/nvim-pack/nvim-spectre"
+  },
   ["nvim-tmux-navigation"] = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/nvim-tmux-navigation",
@@ -214,12 +219,17 @@ _G.packer_plugins = {
   ["nvim-treesitter-context"] = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
-    url = "https://github.com/madlep/nvim-treesitter-context"
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
   },
   ["nvim-treesitter-refactor"] = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/nvim-treesitter-refactor",
     url = "https://github.com/nvim-treesitter/nvim-treesitter-refactor"
+  },
+  ["nvim-treesitter-textobjects"] = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
   },
   ["nvim-ts-rainbow"] = {
     loaded = true,
@@ -240,6 +250,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
+  },
+  playground = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/playground",
+    url = "https://github.com/nvim-treesitter/playground"
   },
   ["plenary.nvim"] = {
     loaded = true,

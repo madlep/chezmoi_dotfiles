@@ -23,6 +23,7 @@ local plugins = function(use)
   use "chrisbra/csv.vim"
   use "kevinhwang91/nvim-bqf"
   use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
+  use "nvim-pack/nvim-spectre"
 
   -- themes
   use "rmehri01/onenord.nvim" -- current theme
@@ -56,8 +57,9 @@ local plugins = function(use)
   -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use "nvim-treesitter/nvim-treesitter-refactor"
-  -- use "nvim-treesitter/nvim-treesitter-context"
-  use { "madlep/nvim-treesitter-context", branch = "add-elixir-default-type-patterns" } -- use nvim-treesitter repo when https://github.com/nvim-treesitter/nvim-treesitter-context/pull/158 merged
+  use "nvim-treesitter/nvim-treesitter-context"
+  use "nvim-treesitter/nvim-treesitter-textobjects"
+  use "nvim-treesitter/playground"
 
   -- Telescope
   use { "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } }
