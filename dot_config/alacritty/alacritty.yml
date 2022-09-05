@@ -4,7 +4,6 @@ import:
 
 window:
   decorations: buttonless
-  opacity: 0.98
   startup_mode: Maximized
 
 font:
