@@ -77,6 +77,14 @@ wk.register({
   y = { "<cmd>:GitBlameCopySHA<CR>", "copy commit SHA to clipboard" },
   c = { "<cmd>:Telescope git_commits<CR>", "list repo git commits" },
   b = { "<cmd>:Telescope git_bcommits<CR>", "list buffer git commits" },
+  p = {
+    name = "Octo pr",
+    l = { "<cmd>:Octo pr list<CR>", "Octo pr list" },
+    c = { "<cmd>:Octo pr checkout<CR>", "Octo pr checkout" },
+    h = { "<cmd>:Octo pr changes<CR>", "Octo pr changes" },
+    d = { "<cmd>:Octo pr diff<CR>", "Octo pr diff" },
+    m = { "<cmd>:Octo pr commits<CR>", "Octo pr commits" },
+  }
 }, { prefix = "<leader>g" })
 
 return {

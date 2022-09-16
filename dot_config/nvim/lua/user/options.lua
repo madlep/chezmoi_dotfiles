@@ -6,7 +6,7 @@ vim.opt.cmdheight = 2 -- more space in the neovim command line for displaying me
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
 vim.opt.fileencoding = "utf-8" -- write everything in utf-8
-vim.opt.hlsearch = true -- highligh all matches on previous search pattern
+vim.opt.hlsearch = true -- highlight all matches on previous search pattern
 vim.opt.ignorecase = true -- ignore case in search patterns
 vim.opt.mouse = "a" -- allow the mouse to be used
 vim.opt.pumheight = 10 -- pop up menu height
@@ -40,7 +40,7 @@ vim.opt.iskeyword:append "-" -- match on words with a dash to allow vim motions 
 vim.opt.list = true -- enable tab/eol/trail etc chars
 vim.opt.listchars:append { -- chars to show if present
   tab = "▸ ",
-  eol = '',
+  -- eol = '',
   trail = "✖"
 }
 vim.opt.startofline = false -- keep cursor position horizontally when moving up and down between lines

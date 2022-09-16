@@ -1,17 +1,21 @@
-vim.cmd [[
-try
-  colorscheme onenord
-catch /^Vim\%((\a\+)\)\=:E185/
-  colorscheme default
-  set background=dark
-endtry
-]]
-
-local onenord = require('onenord')
-
+local onenord = require("onenord")
 onenord.setup({
   fade_nc = true,
   styles = {
     functions = "bold",
   }
 })
+
+local tokyonight = require("tokyonight")
+tokyonight.setup({
+  style = "storm",
+  styles = {
+    functions = "bold",
+    sidebars = "dark",
+  },
+  sidebars = { "qf", "help", "Outline" },
+})
+
+vim.cmd [[
+  colorscheme tokyonight
+]]

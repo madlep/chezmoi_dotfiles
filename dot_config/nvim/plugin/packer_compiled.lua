@@ -41,6 +41,9 @@ local function save_profiles(threshold)
       results[i] = elem[1] .. ' took ' .. elem[2] .. 'ms'
     end
   end
+  if threshold then
+    table.insert(results, '(Only showing plugins that took longer than ' .. threshold .. ' ms ' .. 'to load)')
+  end
 
   _G._packer.profile_output = results
 end
@@ -121,15 +124,15 @@ _G.packer_plugins = {
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/csv.vim",
     url = "https://github.com/chrisbra/csv.vim"
   },
-  ["friendly-snippets"] = {
-    loaded = true,
-    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/friendly-snippets",
-    url = "https://github.com/rafamadriz/friendly-snippets"
-  },
   fzf = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/fzf",
     url = "https://github.com/junegunn/fzf"
+  },
+  ["gh.nvim"] = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/gh.nvim",
+    url = "https://github.com/ldelossa/gh.nvim"
   },
   ["git-blame.nvim"] = {
     loaded = true,
@@ -150,6 +153,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
+  ["litee.nvim"] = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/litee.nvim",
+    url = "https://github.com/ldelossa/litee.nvim"
   },
   ["lsp_lines.nvim"] = {
     loaded = true,
@@ -241,6 +249,16 @@ _G.packer_plugins = {
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
+  nvim_context_vt = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/nvim_context_vt",
+    url = "https://github.com/haringsrob/nvim_context_vt"
+  },
+  ["octo.nvim"] = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/octo.nvim",
+    url = "https://github.com/pwntester/octo.nvim"
+  },
   ["onenord.nvim"] = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/onenord.nvim",
@@ -271,10 +289,20 @@ _G.packer_plugins = {
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
     url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
   },
+  ["telescope-ui-select.nvim"] = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/telescope-ui-select.nvim",
+    url = "https://github.com/nvim-telescope/telescope-ui-select.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["trouble.nvim"] = {
     loaded = true,
@@ -285,11 +313,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/vim-bbye",
     url = "https://github.com/moll/vim-bbye"
-  },
-  ["vim-illuminate"] = {
-    loaded = true,
-    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/vim-illuminate",
-    url = "https://github.com/RRethy/vim-illuminate"
   },
   ["virtual-types.nvim"] = {
     loaded = true,

@@ -17,16 +17,28 @@ local plugins = function(use)
   use "lukas-reineke/indent-blankline.nvim" -- show vertical tab markers for indentation level
   use "folke/trouble.nvim" -- report workspace wide diagnostics/warnings/errors
   use "f-person/git-blame.nvim" -- show gitblame
-  use "RRethy/vim-illuminate" -- auto highlight words using LSP
   use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
   use "folke/which-key.nvim"
   use "chrisbra/csv.vim"
   use "kevinhwang91/nvim-bqf"
   use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
   use "nvim-pack/nvim-spectre"
+  use {
+    'pwntester/octo.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'kyazdani42/nvim-web-devicons',
+    }
+  }
+  use {
+    'ldelossa/gh.nvim',
+    requires = { { 'ldelossa/litee.nvim' } }
+  }
 
   -- themes
-  use "rmehri01/onenord.nvim" -- current theme
+  use "folke/tokyonight.nvim" -- current
+  use "rmehri01/onenord.nvim"
   use "arcticicestudio/nord-vim"
 
   -- nvim-tree
@@ -45,7 +57,6 @@ local plugins = function(use)
   -- snippets
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "L3MON4D3/LuaSnip" -- snippet engine
-  use "rafamadriz/friendly-snippets" -- snippet completions
 
   -- Language Server Protocol
   use "neovim/nvim-lspconfig"
@@ -60,11 +71,13 @@ local plugins = function(use)
   use "nvim-treesitter/nvim-treesitter-context"
   use "nvim-treesitter/nvim-treesitter-textobjects"
   use "nvim-treesitter/playground"
+  use "haringsrob/nvim_context_vt"
 
   -- Telescope
   use { "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } }
   use { 'nvim-telescope/telescope-fzf-native.nvim',
     run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+  use "nvim-telescope/telescope-ui-select.nvim"
 end
 ------------------------
 -- ...Plugins end here
