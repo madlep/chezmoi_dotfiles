@@ -1,6 +1,6 @@
 ---
 import:
-  - ~/.config/alacritty/onenord.yml
+  - ~/.config/alacritty/tokyonight_storm.yml
 
 window:
   decorations: buttonless
