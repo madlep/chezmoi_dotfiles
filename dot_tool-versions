@@ -1,5 +1,5 @@
 elasticsearch 7.10.0
-elixir 1.13.4-otp-25
+elixir 1.14.0-otp-25
 erlang 25.0
 ruby 3.0.2
 nodejs 16.10.0
@@ -9,3 +9,4 @@ postgres 13.4
 haskell 9.0.1
 julia 1.7.2
 rust 1.61.0
+neovim nightly
