@@ -16,7 +16,7 @@ local cfg = require("lspconfig")
 
 local on_attach = function(client, bufnr)
   require("user.keymaps").lsp_keymaps(bufnr) -- custom key maps defined in user/keymaps.lua
-  if client.resolved_capabilities.code_lens then
+  if client.server_capabilities.code_lens then
     -- workaround to refresh codelens in case it doesn't show up automatically
     vim.defer_fn(vim.lsp.codelens.refresh, 5000)
   end

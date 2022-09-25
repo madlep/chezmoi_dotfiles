@@ -91,9 +91,13 @@ return {
   -- keymaps that are set up when a language server is attached to the buffer from user.lsp.handler
   lsp_keymaps = function(bufnr)
     wk.register({
+      ["<C-k>"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "LSP Hover" },
+      gd = { "<cmd>lua vim.lsp.buf.definition()<CR>", "LSP Hover" },
+    })
+    wk.register({
       name = "language server",
       d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Goto definition" },
-      r = { "<cmd>lua require('telescope.builtin').lsp_references()<CR>", "Show references" },
+      r = { "<cmd>lua vim.lsp.buf.references()<CR>", "Show references" },
       h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Show hover info" },
       D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Goto declaration" },
       i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto implementation" },

@@ -23,18 +23,10 @@ local plugins = function(use)
   use "kevinhwang91/nvim-bqf"
   use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
   use "nvim-pack/nvim-spectre"
-  use {
-    'pwntester/octo.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
-      'kyazdani42/nvim-web-devicons',
-    }
-  }
-  use {
-    'ldelossa/gh.nvim',
-    requires = { { 'ldelossa/litee.nvim' } }
-  }
+  use { 'pwntester/octo.nvim',
+    requires = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim', 'kyazdani42/nvim-web-devicons', } }
+  use { 'ldelossa/gh.nvim', requires = { { 'ldelossa/litee.nvim' } } }
+  use "rmagatti/auto-session"
 
   -- themes
   use "folke/tokyonight.nvim" -- current
