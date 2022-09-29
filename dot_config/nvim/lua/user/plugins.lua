@@ -27,6 +27,7 @@ local plugins = function(use)
     requires = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim', 'kyazdani42/nvim-web-devicons', } }
   use { 'ldelossa/gh.nvim', requires = { { 'ldelossa/litee.nvim' } } }
   use "rmagatti/auto-session"
+  use "glepnir/lspsaga.nvim"
 
   -- themes
   use "folke/tokyonight.nvim" -- current

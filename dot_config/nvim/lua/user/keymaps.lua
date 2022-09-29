@@ -67,6 +67,8 @@ wk.register({
   d = { "<cmd>TroubleToggle document_diagnostics<CR>", "Document diagnostics" },
   w = { "<cmd>TroubleToggle workspace_diagnostics<CR>", "Workspace diagnostics" },
   x = { "<cmd>TroubleToggle<cr>", "Toggle trouble list" },
+  f = { "<cmd>lua vim.diagnostic.open_float({focus = true, focusable = true, height = 50, width = 120})<CR>",
+    "Open diagnostic float" }
 }, { prefix = "<leader>x" })
 
 -- git

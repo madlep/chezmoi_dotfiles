@@ -5,27 +5,38 @@ local orig_display = vim.lsp.codelens.display
 
 M.codelens_enabled = true
 
-M.setup = function()
-  vim.lsp.codelens.display = function(lenses, bufnr, client_id)
-    if not M.codelens_enabled then
-      local ns = vim.lsp.codelens.__namespaces[client_id]
-      vim.api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
-    else
-      orig_display(lenses, bufnr, client_id)
-    end
+local codelens_display_override = function(lenses, bufnr, client_id)
+  if not M.codelens_enabled then
+    local ns = vim.lsp.codelens.__namespaces[client_id]
+    vim.api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
+  else
+    orig_display(lenses, bufnr, client_id)
   end
+
+end
+
+M.setup = function()
+  vim.lsp.codelens.display = codelens_display_override
+end
+
+M.enable = function()
+  M.codelens_enabled = true
+  vim.notify("Showing codelenses")
+  vim.lsp.codelens.refresh()
+end
+
+M.disable = function()
+  M.codelens_enabled = false
+  vim.notify("Hiding codelenses")
+  vim.lsp.codelens.refresh()
 end
 
 M.toggle = function()
-  M.codelens_enabled = not M.codelens_enabled
-
   if M.codelens_enabled then
-    vim.notify("Showing codelenses")
+    M.disable()
   else
-    vim.notify("Hiding codelenses")
+    M.enable()
   end
-
-  vim.lsp.codelens.refresh()
 end
 
 return M
