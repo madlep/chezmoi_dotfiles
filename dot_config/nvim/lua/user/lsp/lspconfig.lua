@@ -14,7 +14,7 @@ require("nvim-lsp-installer").setup { ensure_installed = server_names }
 
 local cfg = require("lspconfig")
 
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
   require("user.keymaps").lsp_keymaps(bufnr) -- custom key maps defined in user/keymaps.lua
   vim.lsp.codelens.refresh()
   -- workaround to refresh codelens in case it doesn't show up automatically
