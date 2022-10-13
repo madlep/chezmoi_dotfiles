@@ -3,7 +3,7 @@
 vim.opt.backup = false -- don't create a backup file
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 vim.opt.cmdheight = 2 -- more space in the neovim command line for displaying messages
-vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
+vim.opt.completeopt = { "menuone", "noselect", "noinsert" } -- mostly just for cmp
 vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
 vim.opt.fileencoding = "utf-8" -- write everything in utf-8
 vim.opt.hlsearch = true -- highlight all matches on previous search pattern
@@ -21,6 +21,7 @@ vim.opt.termguicolors = true -- set term gui colors. If false, colors in termina
 vim.opt.timeoutlen = 1000 -- wait for mapped sequence to complete (ms)
 vim.opt.undofile = true -- persistent undo
 vim.opt.updatetime = 300 -- faster completion (4000ms default)
+vim.api.nvim_set_option('updatetime', 300)
 vim.opt.writebackup = false -- don't make write backup as part of saving
 vim.opt.expandtab = true -- convert tabs to spaces
 vim.opt.shiftwidth = 2 -- insert 2 spaces each indentation level

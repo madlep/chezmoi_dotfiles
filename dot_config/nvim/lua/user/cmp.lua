@@ -59,7 +59,10 @@ cmp.setup {
     },
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
-    ["<CR>"] = cmp.mapping.confirm { select = true },
+    ["<CR>"] = cmp.mapping.confirm {
+      behaviour = cmp.ConfirmBehavior.Insert,
+      select = true
+    },
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -90,7 +93,7 @@ cmp.setup {
     }),
   },
   formatting = {
-    fields = { "kind", "abbr", "menu" },
+    fields = { "menu", "abbr", "kind" },
     format = function(entry, vim_item)
       -- Kind icons
       vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
@@ -106,18 +109,21 @@ cmp.setup {
     end,
   },
   sources = cmp.config.sources({
-    { name = "nvim_lsp" },
-    { name = "nvim_lua" },
-    -- { name = "luasnip" },
-    { name = "buffer" },
     { name = "path" },
-    { name = "nvim_lsp_signature_help" },
+    { name = "nvim_lsp", keyword_length = 2 },
+    { name = "nvim_lsp_signature_help", keyword_length = 3 },
+    { name = "nvim_lua", keyword_length = 3 },
+    { name = "buffer", keyword_length = 3 },
+    { name = "vsnip", keyword_length = 3 },
+    { name = 'calc', keyword_length = 3 }
+    -- { name = "luasnip" },
   }),
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
   },
   window = {
+    completion = cmp.config.window.bordered(),
     documentation = {
       border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
     },

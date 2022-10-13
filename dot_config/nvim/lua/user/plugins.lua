@@ -28,6 +28,8 @@ local plugins = function(use)
   use { 'ldelossa/gh.nvim', requires = { { 'ldelossa/litee.nvim' } } }
   use "rmagatti/auto-session"
   use "glepnir/lspsaga.nvim"
+  use "danilamihailov/beacon.nvim"
+  use { 'phaazon/hop.nvim', branch = 'v2' } -- optional but strongly recommended
 
   -- themes
   use "folke/tokyonight.nvim" -- current
@@ -50,6 +52,8 @@ local plugins = function(use)
   -- snippets
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "L3MON4D3/LuaSnip" -- snippet engine
+  use "hrsh7th/cmp-vsnip"
+  use "hrsh7th/vim-vsnip"
 
   -- Language Server Protocol
   use "neovim/nvim-lspconfig"

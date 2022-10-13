@@ -53,6 +53,12 @@ wk.register({
   ["/"] = { ":nohlsearch<CR>", "Clear search highlights" },
 }, { prefix = "<leader>f" })
 
+-- use beacon for search navigation in docs
+keymap("n", "<leader><leader>", ":Beacon<cr>", opts)
+keymap("n", "n", "n:Beacon<cr>", opts)
+keymap("n", "N", "N:Beacon<cr>", opts)
+keymap("n", "*", "*:Beacon<cr>", opts)
+keymap("n", "#", "#:Beacon<cr>", opts)
 
 -- nvim tree
 wk.register({
@@ -88,6 +94,28 @@ wk.register({
     m = { "<cmd>:Octo pr commits<CR>", "Octo pr commits" },
   }
 }, { prefix = "<leader>g" })
+
+-- hop navigation
+local hop = require('hop')
+local directions = require('hop.hint').HintDirection
+vim.keymap.set('', 'f', function()
+  hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
+end, { remap = true })
+vim.keymap.set('', 'F', function()
+  hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+end, { remap = true })
+vim.keymap.set('', 't', function()
+  hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
+end, { remap = true })
+vim.keymap.set('', 'T', function()
+  hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
+end, { remap = true })
+
+wk.register({
+  name = "hop",
+  w = { "<cmd>:HopWord<CR>", "hop to word" },
+  p = { "<cmd>:HopPattern<CR>", "hop to pattern" },
+}, { prefix = "<leader>h" })
 
 return {
   -- keymaps that are set up when a language server is attached to the buffer from user.lsp.handler
