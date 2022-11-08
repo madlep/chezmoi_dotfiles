@@ -12,17 +12,16 @@ null_ls.setup({
   debug = false,
   sources = {
     actions.shellcheck,
-
     diagnostics.codespell,
-    diagnostics.credo,
+    diagnostics.credo.with(require("user.lsp.null-ls.credo").setup()),
     diagnostics.gitlint,
     diagnostics.jsonlint,
     diagnostics.proselint,
     diagnostics.shellcheck,
     diagnostics.yamllint,
     diagnostics.zsh,
-
     formatting.jq,
-    formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
+    formatting.prettier.with(require("user.lsp.null-ls.prettier").setup()),
+    formatting.rustfmt,
   },
 })

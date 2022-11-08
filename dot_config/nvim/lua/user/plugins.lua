@@ -29,7 +29,6 @@ local plugins = function(use)
   use "rmagatti/auto-session"
   use "glepnir/lspsaga.nvim"
   use "danilamihailov/beacon.nvim"
-  use { 'phaazon/hop.nvim', branch = 'v2' } -- optional but strongly recommended
 
   -- themes
   use "folke/tokyonight.nvim" -- current

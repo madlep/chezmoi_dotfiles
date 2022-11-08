@@ -11,12 +11,15 @@ end
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup {
+  create_in_closed_folder = true,
+  hijack_cursor = true,
   update_focused_file = {
     enable = true,
     update_cwd = true,
   },
   renderer = {
     root_folder_modifier = ":~",
+    full_name = true,
     icons = {
       glyphs = {
         default = "",
@@ -54,8 +57,8 @@ nvim_tree.setup {
     },
   },
   view = {
-    adaptive_size = true,
-    width = 30,
+    adaptive_size = false,
+    width = 40,
     height = 30,
     side = "left",
     mappings = {

@@ -1,5 +1,6 @@
--- :help options
--- based on https://github.com/LunarVim/Neovim-from-scratch/blob/01-options/lua/user/options.lua
+-- recommended for nvim-tree EARLY in init start up. options.lua is called first.
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 vim.opt.backup = false -- don't create a backup file
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 vim.opt.cmdheight = 2 -- more space in the neovim command line for displaying messages

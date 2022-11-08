@@ -14,14 +14,20 @@ require("nvim-lsp-installer").setup { ensure_installed = server_names }
 
 local cfg = require("lspconfig")
 
-local on_attach = function(_, bufnr)
-  require("user.keymaps").lsp_keymaps(bufnr) -- custom key maps defined in user/keymaps.lua
-  vim.lsp.codelens.refresh()
-  -- workaround to refresh codelens in case it doesn't show up automatically
-  vim.defer_fn(vim.lsp.codelens.refresh, 5000)
+local maybe_refresh_codelens = function(client)
+  if client.server_capabilities.codelens then
+    vim.lsp.codelens.refresh()
+  end
 end
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local on_attach = function(client, bufnr)
+  require("user.keymaps").lsp_keymaps(bufnr) -- custom key maps defined in user/keymaps.lua
+  maybe_refresh_codelens(client)
+  -- workaround to refresh codelens in case it doesn't show up automatically
+  vim.defer_fn(function() maybe_refresh_codelens(client) end, 5000)
+end
+
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 for server_name, server in pairs(servers) do
   local default_opts = {

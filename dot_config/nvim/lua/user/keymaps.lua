@@ -34,7 +34,8 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 wk.register({
   name = "Buffer",
   b = { ":Bdelete<CR>", "Delete buffer" },
-  t = { ":BufferLineTogglePin<CR>", "Pin buffer" }
+  t = { ":BufferLineTogglePin<CR>", "Pin buffer" },
+  o = { ":%bd|e#|bd#<CR>", "Close other buffers" }
 }, { prefix = "<leader>b" })
 
 -- searching
@@ -95,27 +96,7 @@ wk.register({
   }
 }, { prefix = "<leader>g" })
 
--- hop navigation
-local hop = require('hop')
-local directions = require('hop.hint').HintDirection
-vim.keymap.set('', 'f', function()
-  hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
-end, { remap = true })
-vim.keymap.set('', 'F', function()
-  hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
-end, { remap = true })
-vim.keymap.set('', 't', function()
-  hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
-end, { remap = true })
-vim.keymap.set('', 'T', function()
-  hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
-end, { remap = true })
 
-wk.register({
-  name = "hop",
-  w = { "<cmd>:HopWord<CR>", "hop to word" },
-  p = { "<cmd>:HopPattern<CR>", "hop to pattern" },
-}, { prefix = "<leader>h" })
 
 return {
   -- keymaps that are set up when a language server is attached to the buffer from user.lsp.handler
