@@ -5,6 +5,9 @@ for _, server_config_path in ipairs(server_config_paths) do
   local server_name = server_config_path:gsub("%.lua$", '')
   local server = require("user.lsp.lspconfig." .. server_name)
   servers[server_name] = server
+  if server.version then
+    server_name = server_name .. "@" .. server.version
+  end
   if not server.manual_managed then
     table.insert(server_names, server_name)
   end
