@@ -10,7 +10,7 @@ for _, sign in ipairs(signs) do
 end
 
 vim.diagnostic.config {
-  virtual_text = false,
+  virtual_text = false, -- disabled, as lsp_lines handles display
   source = true,
   signs = {
     active = signs,

@@ -12,7 +12,7 @@ null_ls.setup({
   debug = false,
   sources = {
     actions.shellcheck,
-    diagnostics.codespell,
+    diagnostics.codespell.with(require("user.lsp.null-ls.codespell").setup()),
     diagnostics.credo.with(require("user.lsp.null-ls.credo").setup()),
     diagnostics.gitlint,
     diagnostics.jsonlint,
@@ -24,4 +24,6 @@ null_ls.setup({
     formatting.prettier.with(require("user.lsp.null-ls.prettier").setup()),
     formatting.rustfmt,
   },
+  update_in_insert = false,
+  default_timeout = 10000 -- milliseconds
 })

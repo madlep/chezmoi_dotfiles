@@ -30,6 +30,7 @@ local plugins = function(use)
   use "glepnir/lspsaga.nvim"
   use "danilamihailov/beacon.nvim"
 
+
   -- themes
   use "folke/tokyonight.nvim" -- current
   use "rmehri01/onenord.nvim"
