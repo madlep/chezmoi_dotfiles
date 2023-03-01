@@ -57,7 +57,8 @@ local plugins = function(use)
 
   -- Language Server Protocol
   use "neovim/nvim-lspconfig"
-  use "williamboman/nvim-lsp-installer" -- install/manage language servers from within neovim UI
+  use "williamboman/mason.nvim"
+  use "williamboman/mason-lspconfig.nvim" -- install/manage language servers from within neovim UI
   use "jose-elias-alvarez/null-ls.nvim" -- used by external CLI formatters/linters to hook into Neovim's LSP
   use "jubnzv/virtual-types.nvim" -- show virtual types hint
   use "simrat39/symbols-outline.nvim" -- list functions/modules etc for buffer in side window

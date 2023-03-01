@@ -13,7 +13,7 @@ for _, server_config_path in ipairs(server_config_paths) do
   end
 end
 
-require("nvim-lsp-installer").setup { ensure_installed = server_names }
+require("mason-lspconfig").setup { ensure_installed = server_names }
 
 local cfg = require("lspconfig")
 
