@@ -9,21 +9,23 @@ local formatting = null_ls.builtins.formatting
 -- the same thing from a proper LSP server, as things get weird and/or have
 -- repeated diagnostics etc
 null_ls.setup({
-  debug = false,
-  sources = {
-    actions.shellcheck,
-    diagnostics.codespell.with(require("user.lsp.null-ls.codespell").setup()),
-    diagnostics.credo.with(require("user.lsp.null-ls.credo").setup()),
-    diagnostics.gitlint,
-    diagnostics.jsonlint,
-    diagnostics.proselint,
-    diagnostics.shellcheck,
-    diagnostics.yamllint,
-    diagnostics.zsh,
-    formatting.jq,
-    formatting.prettier.with(require("user.lsp.null-ls.prettier").setup()),
-    formatting.rustfmt,
-  },
-  update_in_insert = false,
-  default_timeout = 10000 -- milliseconds
+    debug = false,
+    sources = {
+        actions.shellcheck,
+        diagnostics.codespell.with(require("user.lsp.null-ls.codespell").setup()),
+        diagnostics.credo.with(require("user.lsp.null-ls.credo").setup()),
+        diagnostics.gitlint,
+        diagnostics.jsonlint,
+        diagnostics.proselint,
+        diagnostics.selene,
+        diagnostics.shellcheck,
+        diagnostics.yamllint,
+        diagnostics.zsh,
+        formatting.jq,
+        formatting.prettier.with(require("user.lsp.null-ls.prettier").setup()),
+        formatting.rustfmt,
+        formatting.stylua,
+    },
+    update_in_insert = false,
+    default_timeout = 10000, -- milliseconds
 })

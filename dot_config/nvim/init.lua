@@ -1,35 +1,13 @@
-require "user.options"
-require "user.keymaps"
-require "user.plugins"
-require "user.colorscheme"
-require "user.nvim-tmux-navigation"
-require "user.cmp"
-require "user.mason"
-require "user.lsp"
-require "user.telescope"
-require "user.treesitter"
-require "user.autopairs"
-require "user.gitsigns"
-require "user.nvim-tree"
-require "user.bufferline"
-require "user.lualine"
-require "user.impatient"
-require "user.indent-blankline"
-require "user.trouble"
-require "user.autocmds"
-require "user.git-blame"
-require "user.lsplines"
-require "user.which-key"
-require "user.symbols-outline"
-require "user.highlights"
-require "user.bqf"
-require "user.treesitter-context"
-require "user.spectre"
-require "user.treesitter-textobjects"
-require "user.treesitter-playground"
-require "user.octo"
-require "user.context_vt"
-require "user.gh"
-require "user.auto-session"
-require "user.lspsaga"
-require "user.csv"
+-- impatient is first, so it can cache and speed up load time
+require("impatient")
+
+-- user/plugins.rb will load everything in user/plugin_config/*.lua
+require("user.plugins")
+
+-- regular setup
+require("user.autocmds")
+require("user.colorscheme")
+require("user.highlights")
+require("user.keymaps")
+require("user.lsp")
+require("user.options")

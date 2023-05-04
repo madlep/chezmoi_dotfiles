@@ -22,7 +22,7 @@ vim.opt.termguicolors = true -- set term gui colors. If false, colors in termina
 vim.opt.timeoutlen = 1000 -- wait for mapped sequence to complete (ms)
 vim.opt.undofile = true -- persistent undo
 vim.opt.updatetime = 300 -- faster completion (4000ms default)
-vim.api.nvim_set_option('updatetime', 300)
+vim.api.nvim_set_option("updatetime", 300)
 vim.opt.writebackup = false -- don't make write backup as part of saving
 vim.opt.expandtab = true -- convert tabs to spaces
 vim.opt.shiftwidth = 2 -- insert 2 spaces each indentation level
@@ -36,14 +36,14 @@ vim.opt.wrap = true -- show long lines as one long thing
 vim.opt.scrolloff = 8 -- keep context at top/bottom when scrolling
 vim.opt.sidescrolloff = 8 -- keep left/right context
 vim.opt.guifont = "Hack Nerd Font Mono:h13" -- font to use when running in a GUI rather than CLI
-vim.opt.shortmess:append "c" -- don't show short messages for insert completions menu
-vim.opt.whichwrap:append "<,>,[,],h,l" -- allow navigation keys to wrap at end of line etc
-vim.opt.iskeyword:append "-" -- match on words with a dash to allow vim motions over the dash
+vim.opt.shortmess:append("c") -- don't show short messages for insert completions menu
+vim.opt.whichwrap:append("<,>,[,],h,l") -- allow navigation keys to wrap at end of line etc
+vim.opt.iskeyword:append("-") -- match on words with a dash to allow vim motions over the dash
 vim.opt.list = true -- enable tab/eol/trail etc chars
-vim.opt.listchars:append { -- chars to show if present
-  tab = "▸ ",
-  -- eol = '',
-  trail = "✖"
-}
+vim.opt.listchars:append({ -- chars to show if present
+    tab = "▸ ",
+    -- eol = '',
+    trail = "✖",
+})
 vim.opt.startofline = false -- keep cursor position horizontally when moving up and down between lines
 vim.opt.ruler = true -- show ruler position

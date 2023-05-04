@@ -79,11 +79,6 @@ _G.packer_plugins = {
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  ["auto-session"] = {
-    loaded = true,
-    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/auto-session",
-    url = "https://github.com/rmagatti/auto-session"
-  },
   ["beacon.nvim"] = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/beacon.nvim",
@@ -138,6 +133,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/csv.vim",
     url = "https://github.com/chrisbra/csv.vim"
+  },
+  ["dir-telescope.nvim"] = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/dir-telescope.nvim",
+    url = "https://github.com/princejoogie/dir-telescope.nvim"
   },
   fzf = {
     loaded = true,
@@ -199,15 +199,10 @@ _G.packer_plugins = {
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
-  ["nord-vim"] = {
-    loaded = true,
-    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/nord-vim",
-    url = "https://github.com/arcticicestudio/nord-vim"
-  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
-    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
+    url = "/Users/juliandoherty/src/opensource/null-ls.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -283,11 +278,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/octo.nvim",
     url = "https://github.com/pwntester/octo.nvim"
-  },
-  ["onenord.nvim"] = {
-    loaded = true,
-    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/onenord.nvim",
-    url = "https://github.com/rmehri01/onenord.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
