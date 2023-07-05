@@ -63,6 +63,10 @@ export PATH="$HOME/.mix:$PATH"
 export PATH="$HOME/.mix/escripts:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+#
+# version manager
+# [[ -s `brew --prefix asdf`/asdf.sh ]] && . `brew --prefix asdf`/libexec/asdf.sh
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
@@ -150,10 +154,6 @@ function c {
 
 # from https://stackoverflow.com/questions/52671926/rails-may-have-been-in-progress-in-another-thread-when-fork-was-called/53404317#53404317 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
-# version manager
-[[ -s `brew --prefix asdf`/asdf.sh ]] && . `brew --prefix asdf`/libexec/asdf.sh
-
-
 # smart fuzzy dir changing
 [[ -s `brew --prefix`/etc/profile.d/z.sh ]] && . `brew --prefix`/etc/profile.d/z.sh
 
@@ -173,6 +173,11 @@ function tmsn {
   tmux rename-session $(basename $(pwd))
 }
 
+function tmclear {
+  tmux send-keys -R \; clear-history
+}
+
 # aliases for bumping asdf managed neovim
-alias update-nvim-stable='asdf uninstall neovim stable && asdf install neovim stable'
-alias update-nvim-nightly='asdf uninstall neovim nightly && asdf install neovim nightly'
+alias update-nvim-stable='asdf uninstall neovim; asdf install neovim stable'
+alias update-nvim-nightly='asdf uninstall neovim; asdf install neovim nightly'
+#
