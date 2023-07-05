@@ -43,9 +43,11 @@ wk.register({
     name = "Find",
     f = { "<cmd>lua require('telescope.builtin').find_files()<CR>", "Find files by name" },
     g = { "<cmd>lua require('telescope.builtin').live_grep()<CR>", "Search" },
+    t = { "<cmd>lua require('telescope.builtin').builtin()<CR>", "Telescope builtins" },
     a = { "<cmd>lua require('telescope.builtin').grep_string()<CR>", "Search string under cursor" },
     b = { "<cmd>lua require('telescope.builtin').buffers()<CR>", "Search buffers" },
     r = { "<cmd>lua require('telescope.builtin').resume()<CR>", "Resume previous" },
+    h = { ":Telescope harpoon marks<CR>", "harpoon marks" },
     d = {
         name = "dir-telescope",
         f = { "<cmd>Telescope dir find_files<CR>", "Find files in dir by name" },
@@ -58,6 +60,18 @@ wk.register({
     },
     ["/"] = { ":nohlsearch<CR>", "Clear search highlights" },
 }, { prefix = "<leader>f" })
+
+-- harpoon navigation
+wk.register({
+    name = "Harpoon",
+    h = { "<cmd>lua require('harpoon.mark').toggle_file()<CR>", "toggle harpoon mark" },
+    f = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "add harpoon mark" },
+    d = { "<cmd>lua require('harpoon.mark').rm_file()<CR>", "remove harpoon mark" },
+    D = { "<cmd>lua require('harpoon.mark').clear_all()<CR>", "clear all harpoon marks" },
+    q = { "<cmd>lua require('harpoon.mark').to_quickfix_list()<CR>:copen<CR>", "open harpoon marks in quicklist" },
+    n = { "<cmd>lua require('harpoon.ui').nav_next()<CR>", "next harpoon" },
+    p = { "<cmd>lua require('harpoon.ui').nav_prev()<CR>", "prev harpoon" },
+}, { prefix = "<leader>h" })
 
 -- use beacon for search navigation in docs
 keymap("n", "<leader><leader>", ":Beacon<cr>", opts)
@@ -91,8 +105,11 @@ wk.register({
     t = { "<cmd>:GitBlameToggle<CR>", "toggle blame" },
     o = { "<cmd>:GitBlameOpenCommitURL<CR>", "open commit in browser" },
     y = { "<cmd>:GitBlameCopySHA<CR>", "copy commit SHA to clipboard" },
-    c = { "<cmd>:Telescope git_commits<CR>", "list repo git commits" },
-    b = { "<cmd>:Telescope git_bcommits<CR>", "list buffer git commits" },
+    c = { "<cmd>:Telescope git_commits<CR>", "repo git commits" },
+    b = { "<cmd>:Telescope git_bcommits<CR>", "buffer git commits" },
+    x = { "<cmd>:GitConflictListQf<CR>", "conflict list" },
+    [">"] = { "<cmd>:GitConflictChooseTheirs<CR>", "conflict - choose THEIR'S" },
+    ["<"] = { "<cmd>:GitConflictChooseOurs<CR>", "conflict - choose OUR'S" },
     p = {
         name = "Octo pr",
         l = { "<cmd>:Octo pr list<CR>", "Octo pr list" },

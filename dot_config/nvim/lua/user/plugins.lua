@@ -6,38 +6,35 @@
 local plugins = function(use)
     -- general
     use("nvim-lua/plenary.nvim") -- useful lua functions used by everything
-    use("alexghergh/nvim-tmux-navigation") -- use <C-h><C-j> etc to move between tmux windows and neovim
-    use("p00f/nvim-ts-rainbow") -- rainbow open/close markers for brackets etc
     use("windwp/nvim-autopairs") -- auto close brackets etc
-    use("lewis6991/gitsigns.nvim") -- show change status in left margin
-    use("akinsho/bufferline.nvim") -- nicer buffer list at top
     use("moll/vim-bbye") -- make buffer/window management less janky
-    use("nvim-lualine/lualine.nvim") -- nicer line at bottom of the screen
     use("lewis6991/impatient.nvim") -- optimise loading of lua plugins at startup
+    use("folke/which-key.nvim") -- key binding helpers
+    use("chrisbra/csv.vim") -- CSV editing
+    use("kevinhwang91/nvim-bqf") -- better quick fix
+    use("danilamihailov/beacon.nvim") -- flash cursor line on movements
+    use("sirosen/vim-rockstar") -- rock star syntax highlighting
+
+    -- UI
+    use("alexghergh/nvim-tmux-navigation") -- use <C-h><C-j> etc to move between tmux windows and neovim
+    -- use("p00f/nvim-ts-rainbow") -- render rainbow open/close markers for brackets etc TODO errors, and unmaintained
+    use("akinsho/bufferline.nvim") -- nicer buffer list at top
+    use("nvim-lualine/lualine.nvim") -- nicer line at bottom of the screen
     use("lukas-reineke/indent-blankline.nvim") -- show vertical tab markers for indentation level
     use("folke/trouble.nvim") -- report workspace wide diagnostics/warnings/errors
+
+    -- git
+    use("lewis6991/gitsigns.nvim") -- show change status in left margin
     use("f-person/git-blame.nvim") -- show gitblame
-    use("https://git.sr.ht/~whynothugo/lsp_lines.nvim")
-    use("folke/which-key.nvim")
-    use("chrisbra/csv.vim")
-    use("kevinhwang91/nvim-bqf")
-    use({
-        "junegunn/fzf",
-        run = function()
-            vim.fn["fzf#install"]()
-        end,
-    })
-    use("nvim-pack/nvim-spectre")
+    use({ "akinsho/git-conflict.nvim", tag = "*" }) -- navigate merge conflicts
     use({
         "pwntester/octo.nvim",
         requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim", "kyazdani42/nvim-web-devicons" },
-    })
-    use({ "ldelossa/gh.nvim", requires = { { "ldelossa/litee.nvim" } } })
-    use("glepnir/lspsaga.nvim")
-    use("danilamihailov/beacon.nvim")
+    }) -- github PR management
+    use({ "ldelossa/gh.nvim", requires = { { "ldelossa/litee.nvim" } } }) -- also github/PR management
 
     -- themes
-    use("folke/tokyonight.nvim") -- current
+    use("folke/tokyonight.nvim")
     -- use "rmehri01/onenord.nvim"
     -- use "arcticicestudio/nord-vim"
 
@@ -55,6 +52,7 @@ local plugins = function(use)
     use("hrsh7th/cmp-nvim-lsp-signature-help") -- LSP function signature completion
 
     -- snippets
+    -- TODO fix weird behaviour with custom tabbing
     use("saadparwaiz1/cmp_luasnip") -- snippet completions
     use("L3MON4D3/LuaSnip") -- snippet engine
     use("hrsh7th/cmp-vsnip")
@@ -62,12 +60,12 @@ local plugins = function(use)
 
     -- Language Server Protocol
     use("neovim/nvim-lspconfig")
-    use("williamboman/mason.nvim")
+    use("williamboman/mason.nvim") -- manage LSP installs
     use("williamboman/mason-lspconfig.nvim") -- install/manage language servers from within neovim UI
-    -- use "jose-elias-alvarez/null-ls.nvim" -- used by external CLI formatters/linters to hook into Neovim's LSP
-    use("~/src/opensource/null-ls.nvim")
+    use("jose-elias-alvarez/null-ls.nvim") -- used by external CLI formatters/linters to hook into Neovim's LSP
     use("jubnzv/virtual-types.nvim") -- show virtual types hint
     use("simrat39/symbols-outline.nvim") -- list functions/modules etc for buffer in side window
+    use("https://git.sr.ht/~whynothugo/lsp_lines.nvim") -- show inline LSP diagnostics
 
     -- Treesitter
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -77,8 +75,14 @@ local plugins = function(use)
     use("nvim-treesitter/playground")
     use("haringsrob/nvim_context_vt")
 
-    -- Telescope
-    use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
+    -- search / navigation
+    use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } }) -- telescope UI
+    use({
+        "junegunn/fzf",
+        run = function()
+            vim.fn["fzf#install"]()
+        end,
+    }) -- fuzzy finder
     use({
         "nvim-telescope/telescope-fzf-native.nvim",
         run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
@@ -88,7 +92,9 @@ local plugins = function(use)
         "princejoogie/dir-telescope.nvim",
         -- telescope.nvim is a required dependency
         requires = { "nvim-telescope/telescope.nvim" },
-    })
+    }) -- telescope search for filename / content WITHIN dir
+    use("nvim-pack/nvim-spectre") -- global search / rename
+    use("ThePrimeagen/harpoon")
 end
 ------------------------
 -- ...Plugins end here
