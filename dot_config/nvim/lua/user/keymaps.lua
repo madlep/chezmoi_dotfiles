@@ -82,10 +82,10 @@ keymap("n", "#", "#:Beacon<cr>", opts)
 
 -- nvim tree
 wk.register({
-    name = "File tree",
-    t = { ":NvimTreeToggle<CR>", "Toggle Tree" },
+    name = "Directory tree",
+    d = { ":NvimTreeToggle<CR>", "Toggle Tree" },
     f = { ":NvimTreeFindFile<CR>", "Focus on current file" },
-}, { prefix = "<leader>t" })
+}, { prefix = "<leader>d" })
 
 -- diagnostics
 wk.register({
@@ -119,6 +119,32 @@ wk.register({
         m = { "<cmd>:Octo pr commits<CR>", "Octo pr commits" },
     },
 }, { prefix = "<leader>g" })
+
+-- tests
+wk.register({
+    name = "test",
+    t = { "<cmd>lua require('neotest').summary.toggle()<CR>", "test summary" },
+    a = { "<cmd>lua require('neotest').run.run({suite = true})<CR>", "run all tests" },
+    r = {
+        function()
+            local other = require("other-nvim")
+            local neotest = require("neotest")
+
+            neotest.summary.open()
+            neotest.output_panel.open()
+            other.open("test")
+            neotest.run.run(vim.fn.expand("%"))
+        end,
+        "run current test",
+    },
+    n = { "<cmd>lua require('neotest').run.run()<CR>", "run nearest test" },
+}, { prefix = "<leader>t" })
+
+-- other file
+wk.register({
+    o = { "<cmd>:Other<CR>", "open other file" },
+    t = { "<cmd>:Other test<CR>", "open test file" },
+}, { prefix = "<leader>o" })
 
 return {
     -- keymaps that are set up when a language server is attached to the buffer from user.lsp.handler

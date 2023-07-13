@@ -4,6 +4,9 @@ return {
             dialyzerEnabled = true,
             suggestSpecs = true,
             dialyzerFormat = "dialyzer_short",
+            enableTestLenses = true,
+            -- using neotest for this
+            -- signatureAfterComplete = true,
         },
     },
     -- required till https://github.com/elixir-lsp/elixir-ls/issues/886 is fixed with OTP 26.0.2

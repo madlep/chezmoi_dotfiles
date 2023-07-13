@@ -15,7 +15,7 @@ require("bufferline").setup({
         left_trunc_marker = "",
         right_trunc_marker = "",
         show_buffer_close_icons = true,
-        buffer_close_icon = "",
+        buffer_close_icon = "",
         separator_style = "slant",
         -- tab setup
         show_tab_indicators = true,

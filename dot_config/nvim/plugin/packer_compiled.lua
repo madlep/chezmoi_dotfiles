@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["FixCursorHold.nvim"] = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/FixCursorHold.nvim",
+    url = "https://github.com/antoinemadec/FixCursorHold.nvim"
+  },
   LuaSnip = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/LuaSnip",
@@ -204,15 +209,25 @@ _G.packer_plugins = {
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  neotest = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/neotest",
+    url = "https://github.com/nvim-neotest/neotest"
+  },
+  ["neotest-elixir"] = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/neotest-elixir",
+    url = "https://github.com/jfpedroza/neotest-elixir"
+  },
+  ["neotest-go"] = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/neotest-go",
+    url = "https://github.com/nvim-neotest/neotest-go"
+  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
     url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
-  },
-  ["nvim-autopairs"] = {
-    loaded = true,
-    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
-    url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-bqf"] = {
     loaded = true,
@@ -279,6 +294,11 @@ _G.packer_plugins = {
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/octo.nvim",
     url = "https://github.com/pwntester/octo.nvim"
   },
+  ["other.nvim"] = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/other.nvim",
+    url = "https://github.com/rgroli/other.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -329,10 +349,20 @@ _G.packer_plugins = {
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/vim-bbye",
     url = "https://github.com/moll/vim-bbye"
   },
+  ["vim-illuminate"] = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/vim-illuminate",
+    url = "https://github.com/RRethy/vim-illuminate"
+  },
   ["vim-rockstar"] = {
     loaded = true,
     path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/vim-rockstar",
     url = "https://github.com/sirosen/vim-rockstar"
+  },
+  ["vim-sandwich"] = {
+    loaded = true,
+    path = "/Users/juliandoherty/.local/share/nvim/site/pack/packer/start/vim-sandwich",
+    url = "https://github.com/machakann/vim-sandwich"
   },
   ["vim-vsnip"] = {
     loaded = true,

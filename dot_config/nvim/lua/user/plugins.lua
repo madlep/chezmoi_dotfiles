@@ -6,14 +6,23 @@
 local plugins = function(use)
     -- general
     use("nvim-lua/plenary.nvim") -- useful lua functions used by everything
-    use("windwp/nvim-autopairs") -- auto close brackets etc
     use("moll/vim-bbye") -- make buffer/window management less janky
     use("lewis6991/impatient.nvim") -- optimise loading of lua plugins at startup
     use("folke/which-key.nvim") -- key binding helpers
     use("chrisbra/csv.vim") -- CSV editing
     use("kevinhwang91/nvim-bqf") -- better quick fix
-    use("danilamihailov/beacon.nvim") -- flash cursor line on movements
-    use("sirosen/vim-rockstar") -- rock star syntax highlighting
+    use("machakann/vim-sandwich") -- add/delete surrounding ({[]}) etc
+    use({
+        "nvim-neotest/neotest",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "antoinemadec/FixCursorHold.nvim",
+            "jfpedroza/neotest-elixir",
+            "nvim-neotest/neotest-go",
+        },
+    }) -- testing
+    use("rgroli/other.nvim") -- code/test alternate file switching
 
     -- UI
     use("alexghergh/nvim-tmux-navigation") -- use <C-h><C-j> etc to move between tmux windows and neovim
@@ -22,6 +31,8 @@ local plugins = function(use)
     use("nvim-lualine/lualine.nvim") -- nicer line at bottom of the screen
     use("lukas-reineke/indent-blankline.nvim") -- show vertical tab markers for indentation level
     use("folke/trouble.nvim") -- report workspace wide diagnostics/warnings/errors
+    use("RRethy/vim-illuminate") -- highlight word under cursor throughout doc
+    use("danilamihailov/beacon.nvim") -- flash cursor line on movements
 
     -- git
     use("lewis6991/gitsigns.nvim") -- show change status in left margin
@@ -95,6 +106,9 @@ local plugins = function(use)
     }) -- telescope search for filename / content WITHIN dir
     use("nvim-pack/nvim-spectre") -- global search / rename
     use("ThePrimeagen/harpoon")
+
+    -- language specific
+    use("sirosen/vim-rockstar") -- rock star syntax highlighting
 end
 ------------------------
 -- ...Plugins end here
