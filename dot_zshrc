@@ -75,6 +75,8 @@ if type brew &>/dev/null; then
   compinit
 fi
 
+export ASDF_GOLANG_MOD_VERSION_ENABLED=true
+
 source $ZSH/oh-my-zsh.sh
 #
 # Make Vi mode transitions faster (KEYTIMEOUT is in hundredths of a second)
