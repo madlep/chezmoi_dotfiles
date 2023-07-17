@@ -1,4 +1,8 @@
-local null_ls = require("null-ls")
+local ok, null_ls = pcall(require, "null-ls")
+if not ok then
+    vim.notify("couldn't load null-ls")
+    return
+end
 
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
 local actions = null_ls.builtins.code_actions

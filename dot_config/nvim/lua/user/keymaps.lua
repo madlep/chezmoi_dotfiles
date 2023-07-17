@@ -1,4 +1,8 @@
-local wk = require("which-key") -- to register leader key labels for which key help
+local ok, wk = pcall(require, "which-key") -- to register leader key labels for which key help
+if not ok then
+    vim.notify("couldn't load which-key")
+    return
+end
 
 local opts = { noremap = true, silent = true }
 

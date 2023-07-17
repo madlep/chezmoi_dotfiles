@@ -13,7 +13,13 @@ for _, server_config_path in ipairs(server_config_paths) do
     end
 end
 
-require("mason-lspconfig").setup({ ensure_installed = server_names })
+local ok, mason = pcall(require, "mason-lspconfig")
+if not ok then
+    vim.notify("couldn't load mason-lspconfig")
+    return
+end
+
+mason.setup({ ensure_installed = server_names })
 
 local cfg = require("lspconfig")
 

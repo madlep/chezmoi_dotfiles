@@ -115,15 +115,18 @@ end
 ------------------------
 
 -- Automatically install packer
-local fn = vim.fn
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-local PACKER_BOOTSTRAP
-if fn.empty(fn.glob(install_path)) > 0 then
-    PACKER_BOOTSTRAP =
-        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-    print("Installing packer. Close and reopen Neovim...")
-    vim.cmd([[packadd packer.nvim]])
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
 end
+
+local packer_bootstrap = ensure_packer()
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd([[
@@ -132,6 +135,7 @@ vim.cmd([[
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
   augroup end
 ]])
+
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
@@ -151,7 +155,10 @@ packer.init({
 local plugin_config_paths = vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/user/plugin_config", [[v:val =~ "\.lua$"]])
 for _, plugin_config_path in ipairs(plugin_config_paths) do
     local plugin_config_name = plugin_config_path:gsub("%.lua$", "")
-    require("user.plugin_config." .. plugin_config_name)
+    local ok, _ = pcall(require, "user.plugin_config." .. plugin_config_name)
+    if not ok then
+        vim.notify("couldn't load plugin config for: " .. plugin_config_name)
+    end
 end
 
 -- Install plugins
@@ -159,7 +166,9 @@ return packer.startup(function(use)
     -- packer can self manage
     use("wbthomason/packer.nvim")
     plugins(use)
-    if PACKER_BOOTSTRAP then
-        require("packer").sync()
+
+
+    if packer_bootstrap then
+        require('packer').sync()
     end
 end)
