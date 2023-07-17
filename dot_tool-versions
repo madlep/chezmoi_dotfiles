@@ -1,10 +1,10 @@
-elixir 1.15.1-otp-26
+elixir 1.15.2-otp-26
 erlang 26.0.2
-ruby 3.2.1
-rust 1.64.0
+ruby 3.2.2
+rust 1.71.0
 neovim nightly
-rebar 3.19.0
-nodejs 20.2.0
-python 3.11.2
-golang 1.20.4
+rebar 3.22.0
+nodejs 20.4.0
+python 3.11.4
+golang 1.20.6
 yarn 1.22.19
