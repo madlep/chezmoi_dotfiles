@@ -41,4 +41,7 @@ brew "zsh"
 brew "zsh-completions"
 
 cask "gitify"
-font-hack-nerd-font
+cask "alacritty"
+
+tap "homebrew/cask-fonts"
+cask "font-hack-nerd-font"
