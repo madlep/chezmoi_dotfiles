@@ -1,0 +1,3 @@
+
+export NODE_EXTRA_CA_CERTS=~/.local/share/ZscalerRootCertificate-2048-SHA256.crt
+export GOPRIVATE=github.com/Wesfarmers-Digital

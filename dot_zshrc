@@ -182,4 +182,5 @@ function tmclear {
 # aliases for bumping asdf managed neovim
 alias update-nvim-stable='asdf uninstall neovim; asdf install neovim stable'
 alias update-nvim-nightly='asdf uninstall neovim; asdf install neovim nightly'
-#
+
+safe_source ~/.zshrc_local
