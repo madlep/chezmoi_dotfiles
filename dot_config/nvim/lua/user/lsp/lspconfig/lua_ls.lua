@@ -17,6 +17,11 @@ return {
                     indent_size = "4",
                 },
             },
+            hint = {
+                enable = true,
+                arrayIndex = "Enable",
+                setType = true,
+            },
         },
     },
 }

@@ -77,6 +77,10 @@ local plugins = function(use)
     use("jubnzv/virtual-types.nvim") -- show virtual types hint
     use("simrat39/symbols-outline.nvim") -- list functions/modules etc for buffer in side window
     use("https://git.sr.ht/~whynothugo/lsp_lines.nvim") -- show inline LSP diagnostics
+    use({
+        "SmiteshP/nvim-navic",
+        requires = "neovim/nvim-lspconfig",
+    }) -- show breadcrumbs to location in LSP hierarchy under cursor
 
     -- Treesitter
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -87,7 +91,6 @@ local plugins = function(use)
     use("haringsrob/nvim_context_vt")
 
     -- search / navigation
-    use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } }) -- telescope UI
     use({
         "junegunn/fzf",
         run = function()
@@ -99,6 +102,7 @@ local plugins = function(use)
         run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
     })
     use("nvim-telescope/telescope-ui-select.nvim")
+    use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } }) -- telescope UI
     use({
         "princejoogie/dir-telescope.nvim",
         -- telescope.nvim is a required dependency
@@ -116,14 +120,14 @@ end
 
 -- Automatically install packer
 local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+    local fn = vim.fn
+    local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+        vim.cmd([[packadd packer.nvim]])
+        return true
+    end
+    return false
 end
 
 local packer_bootstrap = ensure_packer()
@@ -135,7 +139,6 @@ vim.cmd([[
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
   augroup end
 ]])
-
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
@@ -155,9 +158,9 @@ packer.init({
 local plugin_config_paths = vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/user/plugin_config", [[v:val =~ "\.lua$"]])
 for _, plugin_config_path in ipairs(plugin_config_paths) do
     local plugin_config_name = plugin_config_path:gsub("%.lua$", "")
-    local ok, _ = pcall(require, "user.plugin_config." .. plugin_config_name)
+    local ok, err = pcall(require, "user.plugin_config." .. plugin_config_name)
     if not ok then
-        vim.notify("couldn't load plugin config for: " .. plugin_config_name)
+        vim.notify("couldn't load plugin config for: " .. plugin_config_name .. "err=" .. err)
     end
 end
 
@@ -167,8 +170,7 @@ return packer.startup(function(use)
     use("wbthomason/packer.nvim")
     plugins(use)
 
-
     if packer_bootstrap then
-        require('packer').sync()
+        require("packer").sync()
     end
 end)

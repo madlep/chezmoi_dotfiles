@@ -6,6 +6,9 @@ end
 local actions = require("telescope.actions")
 local trouble = require("trouble.providers.telescope")
 
+-- telescope.load_extension("fzf_native")
+telescope.load_extension("ui-select")
+
 telescope.setup({
     defaults = {
         prompt_prefix = " ",
@@ -85,6 +88,3 @@ telescope.setup({
         },
     },
 })
-
-telescope.load_extension("fzf")
-telescope.load_extension("ui-select")

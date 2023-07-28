@@ -64,13 +64,21 @@ local filename = {
     },
 }
 
-local gb = require("gitblame")
-local gitblame = {
-    gb.get_current_blame_text,
-    cond = function()
-        return gb.is_blame_text_available() and show_in_width()
-    end,
+local navic = {
+    "navic",
+    color_correction = "dynamic",
+    navic_opts = nil,
+    cond = require("nvim-navic").is_available,
+    draw_empty = true,
 }
+
+-- local gb = require("gitblame")
+-- local gitblame = {
+--     gb.get_current_blame_text,
+--     cond = function()
+--         return gb.is_blame_text_available() and show_in_width()
+--     end,
+-- }
 
 lualine.setup({
     options = {
@@ -84,8 +92,8 @@ lualine.setup({
     sections = {
         lualine_a = { filename },
         lualine_b = { filetype },
-        lualine_c = { diagnostics, branch, diff },
-        lualine_x = { gitblame, branch },
+        lualine_c = { diagnostics },
+        lualine_x = { diff, branch },
         lualine_y = { mode },
         lualine_z = { location, "progress" },
     },
@@ -98,6 +106,14 @@ lualine.setup({
         lualine_z = {},
     },
     tabline = {},
+    winbar = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { navic },
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
+    },
     extensions = {
         "nvim-tree",
     },

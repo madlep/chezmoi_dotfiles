@@ -1,5 +1,6 @@
 require("nvim_context_vt").setup({
     prefix = " ",
+    disable_virtual_lines_ft = { "yaml" },
 })
 
 -- local config = require('nvim_context_vt.config')
