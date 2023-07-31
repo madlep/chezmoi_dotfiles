@@ -29,7 +29,5 @@
 [init]
   defaultBranch = main
   templatedir = ~/.git-template
-[url "ssh://git@github.com/"]
-  insteadOf = https://github.com/
 [include]
   path = ~/.gitconfig.local
