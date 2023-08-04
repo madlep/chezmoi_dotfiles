@@ -2,11 +2,13 @@ require("nvim-tree").setup({
     hijack_cursor = true,
     update_focused_file = {
         enable = true,
-        update_cwd = true,
+        update_root = true,
     },
+    prefer_startup_root = true,
     renderer = {
         root_folder_modifier = ":~",
         full_name = true,
+        highlight_opened_files = "all",
         icons = {
             glyphs = {
                 default = "",
@@ -37,7 +39,7 @@ require("nvim-tree").setup({
         enable = true,
         show_on_dirs = true,
         icons = {
-            hint = "",
+            hint = "",
             info = "",
             warning = "",
             error = "",
@@ -50,5 +52,6 @@ require("nvim-tree").setup({
             max = 200,
         },
         side = "left",
+        cursorline = true,
     },
 })

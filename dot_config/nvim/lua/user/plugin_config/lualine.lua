@@ -52,6 +52,7 @@ local location = {
 
 local filename = {
     "filename",
+    draw_empty = true,
     colored = true,
     file_status = true,
     new_file_status = true,
@@ -62,6 +63,17 @@ local filename = {
         unnamed = "",
         newfile = "",
     },
+}
+
+local full_filename = {
+    "filename",
+    draw_empty = true,
+    colored = true,
+    file_status = true,
+    new_file_status = true,
+    path = 3,
+    shorting_target = 80,
+    symbols = {},
 }
 
 local navic = {
@@ -101,15 +113,23 @@ lualine.setup({
         lualine_a = {},
         lualine_b = {},
         lualine_c = {},
-        lualine_x = { "location" },
+        lualine_x = {},
         lualine_y = {},
-        lualine_z = {},
+        lualine_z = { location, "progress" },
     },
     tabline = {},
     winbar = {
-        lualine_a = {},
+        lualine_a = { full_filename },
+        lualine_b = { navic },
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
+    },
+    inactive_winbar = {
+        lualine_a = { full_filename },
         lualine_b = {},
-        lualine_c = { navic },
+        lualine_c = {},
         lualine_x = {},
         lualine_y = {},
         lualine_z = {},

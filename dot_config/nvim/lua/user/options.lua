@@ -28,6 +28,7 @@ vim.opt.expandtab = true -- convert tabs to spaces
 vim.opt.shiftwidth = 2 -- insert 2 spaces each indentation level
 --vim.opt.tabstop = 2 -- insert 2 characters for each tab character entered
 vim.opt.cursorline = true -- highlight current cursor line
+vim.opt.colorcolumn = "80,100,120"
 vim.opt.number = true -- show number lines
 vim.opt.relativenumber = false -- don't use relative number lines, just absolute
 vim.opt.numberwidth = 4 -- show 4 chars in left margin for numbers
