@@ -23,7 +23,7 @@ null_ls.setup({
         diagnostics.proselint,
         diagnostics.selene,
         diagnostics.shellcheck,
-        diagnostics.yamllint,
+        -- diagnostics.yamllint,
         diagnostics.zsh,
         formatting.jq,
         formatting.prettier.with(require("user.lsp.null-ls.prettier").setup()),

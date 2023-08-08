@@ -1,5 +1,5 @@
 brew "asdf"
-brew "awk"
+brew "awk" 
 brew "chezmoi"
 brew "codespell"
 brew "ctags"
@@ -41,8 +41,10 @@ brew "z"
 brew "zsh"
 brew "zsh-completions"
 
-cask "gitify"
-cask "alacritty"
-
 tap "homebrew/cask-fonts"
 cask "font-hack-nerd-font"
+
+# don't need these by default
+# cask "gitify" 
+# cask "alacritty"
+
