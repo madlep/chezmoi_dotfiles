@@ -166,12 +166,30 @@ return {
             i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto implementation" },
             s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help" },
             l = { "<cmd>lua require('lsp_lines').toggle()<CR>", "Diagnostics toggle" },
-            o = { "<cmd>:SymbolsOutline<CR>", "Outline toggle" },
+            -- o = { "<cmd>:SymbolsOutline<CR>", "Outline toggle" },
+            o = { "<cmd>:Lspsaga outline<CR>", "Outline toggle" },
             c = {
                 name = "Codelens",
                 r = { "<cmd>lua vim.lsp.codelens.run()<CR>", "Run codelens" },
                 t = { "<cmd>lua require('user.lsp.codelens').toggle()<CR>", "Toggle codelens" },
             },
+            [">"] = { "<cmd>:Lspsaga incoming_calls<CR>", "incoming calls" },
+            ["<"] = { "<cmd>:Lspsaga outgoing_calls<CR>", "outgoing calls" },
         }, { prefix = "<leader>l", buffer = bufnr })
+    end,
+
+    lspsaga_keymaps = function()
+        return {
+            outline = {
+                keys = {
+                    jump = "<CR>",
+                },
+            },
+            callhierarchy = {
+                keys = {
+                    toggle_or_req = "o",
+                },
+            },
+        }
     end,
 }
