@@ -1,4 +1,3 @@
-
 -- impatient is first, so it can cache and speed up load time
 local ok, _ = pcall(require, "impatient")
 if not ok then
