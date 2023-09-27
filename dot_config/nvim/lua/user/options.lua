@@ -22,7 +22,7 @@ vim.opt.termguicolors = true -- set term gui colors. If false, colors in termina
 vim.opt.timeoutlen = 1000 -- wait for mapped sequence to complete (ms)
 vim.opt.undofile = true -- persistent undo
 vim.opt.updatetime = 300 -- faster completion (4000ms default)
-vim.api.nvim_set_option("updatetime", 300)
+vim.api.nvim_set_option_value("updatetime", 300, { scope = "global" })
 vim.opt.writebackup = false -- don't make write backup as part of saving
 vim.opt.expandtab = true -- convert tabs to spaces
 vim.opt.shiftwidth = 2 -- insert 2 spaces each indentation level
