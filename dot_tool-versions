@@ -6,7 +6,7 @@ neovim nightly
 rebar 3.22.0
 nodejs 20.4.0
 python 3.11.4
-golang 1.20.6
+golang 1.21.1
 yarn 1.22.19
 java openjdk-20.0.2
 maven 3.9.3
