@@ -20,7 +20,7 @@ null_ls.setup({
         diagnostics.credo.with(require("user.lsp.null-ls.credo").setup()),
         diagnostics.gitlint,
         diagnostics.jsonlint,
-        diagnostics.proselint,
+        -- diagnostics.proselint,
         diagnostics.selene,
         diagnostics.shellcheck,
         -- diagnostics.yamllint,
