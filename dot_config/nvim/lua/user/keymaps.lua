@@ -33,8 +33,8 @@ keymap("x", "<Up>", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<Down>", ":move '>+1<CR>gv-gv", opts)
 
 -- buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<S-l>", "<cmd>lua require('user.buffer').safe_bnext()<CR>", opts)
+keymap("n", "<S-h>", "<cmd>lua require('user.buffer').safe_bprev()<CR>", opts)
 wk.register({
     name = "Buffer",
     b = { ":Bdelete<CR>", "Delete buffer" },

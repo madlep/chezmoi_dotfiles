@@ -39,5 +39,10 @@ require("bufferline").setup({
         enforce_regular_tabs = false, -- fixed size tabs. Needs to be false to get unique names showing for files with same name, different dir
         always_show_bufferline = true,
         sort_by = "id", -- order by buffer id (ie opened order)
+        custom_filter = function(buf_number, _)
+            if vim.bo[buf_number].filetype ~= "qf" then
+                return true
+            end
+        end,
     },
 })

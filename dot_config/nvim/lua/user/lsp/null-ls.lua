@@ -21,7 +21,7 @@ null_ls.setup({
         diagnostics.gitlint,
         diagnostics.jsonlint,
         -- diagnostics.proselint,
-        diagnostics.selene,
+        -- diagnostics.selene,
         diagnostics.shellcheck,
         -- diagnostics.yamllint,
         diagnostics.zsh,
