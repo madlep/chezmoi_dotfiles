@@ -166,6 +166,7 @@ return {
             i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto implementation" },
             s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help" },
             l = { "<cmd>lua require('lsp_lines').toggle()<CR>", "Diagnostics toggle" },
+            n = { "<cmd>lua vim.lsp.inlay_hint(0)<CR>", "Inlay hint toggle" },
             -- o = { "<cmd>:SymbolsOutline<CR>", "Outline toggle" },
             o = { "<cmd>:Lspsaga outline<CR>", "Outline toggle" },
             c = {

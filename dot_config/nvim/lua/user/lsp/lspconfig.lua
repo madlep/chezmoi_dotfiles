@@ -34,8 +34,7 @@ local on_attach = function(client, bufnr)
     require("user.plugin_config.virtualtypes").on_attach(client, bufnr)
 
     if client.server_capabilities.inlayHintProvider then
-        vim.lsp.buf.inlay_hint(bufnr, true)
-        vim.api.nvim_set_hl(bufnr, "LspInlayHint", { fg = "red" })
+        vim.lsp.inlay_hint(bufnr, true)
     end
 
     maybe_refresh_codelens(client)
@@ -55,9 +54,3 @@ for server_name, server in pairs(servers) do
     local opts = vim.tbl_deep_extend("force", default_opts, server)
     cfg[server_name].setup(opts)
 end
-
-local function test(a, b, c)
-    return a + b + c
-end
-
-test(1, 2, 3)
