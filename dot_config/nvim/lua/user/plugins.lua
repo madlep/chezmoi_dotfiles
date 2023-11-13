@@ -81,7 +81,9 @@ local plugins = function(use)
         "SmiteshP/nvim-navic",
         requires = "neovim/nvim-lspconfig",
     }) -- show breadcrumbs to location in LSP hierarchy under cursor
-    use("nvimdev/lspsaga.nvim")
+    use("stevearc/aerial.nvim")
+
+    -- use("nvimdev/lspsaga.nvim")
     -- use("~/src/opensource/lspsaga.nvim")
 
     -- Treesitter

@@ -168,29 +168,29 @@ return {
             l = { "<cmd>lua require('lsp_lines').toggle()<CR>", "Diagnostics toggle" },
             n = { "<cmd>lua vim.lsp.inlay_hint(0)<CR>", "Inlay hint toggle" },
             -- o = { "<cmd>:SymbolsOutline<CR>", "Outline toggle" },
-            o = { "<cmd>:Lspsaga outline<CR>", "Outline toggle" },
+            o = { "<cmd>:AerialToggle right<CR>", "Outline toggle" },
             c = {
                 name = "Codelens",
                 r = { "<cmd>lua vim.lsp.codelens.run()<CR>", "Run codelens" },
                 t = { "<cmd>lua require('user.lsp.codelens').toggle()<CR>", "Toggle codelens" },
             },
-            [">"] = { "<cmd>:Lspsaga incoming_calls<CR>", "incoming calls" },
-            ["<"] = { "<cmd>:Lspsaga outgoing_calls<CR>", "outgoing calls" },
+            -- [">"] = { "<cmd>:Lspsaga incoming_calls<CR>", "incoming calls" },
+            -- ["<"] = { "<cmd>:Lspsaga outgoing_calls<CR>", "outgoing calls" },
         }, { prefix = "<leader>l", buffer = bufnr })
     end,
 
-    lspsaga_keymaps = function()
-        return {
-            outline = {
-                keys = {
-                    jump = "<CR>",
-                },
-            },
-            callhierarchy = {
-                keys = {
-                    toggle_or_req = "o",
-                },
-            },
-        }
-    end,
+    -- lspsaga_keymaps = function()
+    --     return {
+    --         outline = {
+    --             keys = {
+    --                 jump = "<CR>",
+    --             },
+    --         },
+    --         callhierarchy = {
+    --             keys = {
+    --                 toggle_or_req = "o",
+    --             },
+    --         },
+    --     }
+    -- end,
 }
