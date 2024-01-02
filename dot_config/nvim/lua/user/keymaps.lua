@@ -165,7 +165,13 @@ return {
             D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Goto declaration" },
             i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto implementation" },
             s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help" },
-            l = { "<cmd>lua require('lsp_lines').toggle()<CR>", "Diagnostics toggle" },
+            l = {
+                function()
+                    require("lsp_lines").toggle()
+                    vim.diagnostic.config({ virtual_text = not vim.diagnostic.config().virtual_text })
+                end,
+                "Diagnostics toggle",
+            },
             n = { "<cmd>lua vim.lsp.inlay_hint(0)<CR>", "Inlay hint toggle" },
             -- o = { "<cmd>:SymbolsOutline<CR>", "Outline toggle" },
             o = { "<cmd>:AerialToggle right<CR>", "Outline toggle" },

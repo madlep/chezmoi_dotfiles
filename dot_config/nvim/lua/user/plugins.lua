@@ -64,8 +64,8 @@ local plugins = function(use)
 
     -- snippets
     -- TODO fix weird behaviour with custom tabbing
-    use("saadparwaiz1/cmp_luasnip") -- snippet completions
-    use("L3MON4D3/LuaSnip") -- snippet engine
+    -- use("saadparwaiz1/cmp_luasnip") -- snippet completions
+    -- use("L3MON4D3/LuaSnip") -- snippet engine
     use("hrsh7th/cmp-vsnip")
     use("hrsh7th/vim-vsnip")
 

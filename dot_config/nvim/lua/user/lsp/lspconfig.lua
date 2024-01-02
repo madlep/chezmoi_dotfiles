@@ -44,7 +44,7 @@ local on_attach = function(client, bufnr)
     end, 5000)
 end
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 for server_name, server in pairs(servers) do
     local default_opts = {
