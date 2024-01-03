@@ -33,6 +33,8 @@ local plugins = function(use)
     use("folke/trouble.nvim") -- report workspace wide diagnostics/warnings/errors
     use("RRethy/vim-illuminate") -- highlight word under cursor throughout doc
     use("danilamihailov/beacon.nvim") -- flash cursor line on movements
+    use("rcarriga/nvim-notify") -- fancy notification
+    use("stevearc/dressing.nvim") -- nicer input / select
 
     -- git
     use("lewis6991/gitsigns.nvim") -- show change status in left margin
