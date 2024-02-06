@@ -8,7 +8,7 @@ for _, server_config_path in ipairs(server_config_paths) do
     if server.version then
         server_name = server_name .. "@" .. server.version
     end
-    if not server.manual_managed then
+    if not server.disabled then
         table.insert(server_names, server_name)
     end
 end
