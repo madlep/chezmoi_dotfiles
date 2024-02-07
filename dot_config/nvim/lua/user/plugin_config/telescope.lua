@@ -7,7 +7,7 @@ local actions = require("telescope.actions")
 local trouble = require("trouble.providers.telescope")
 
 -- telescope.load_extension("fzf_native")
-telescope.load_extension("ui-select")
+-- telescope.load_extension("ui-select")
 
 telescope.setup({
     defaults = {
@@ -83,8 +83,8 @@ telescope.setup({
             override_file_sorter = true,
             case_mode = "smart_case", -- or "ignore_case" or "respect_case"
         },
-        ["ui-select"] = {
-            require("telescope.themes").get_dropdown({}),
-        },
+        -- ["ui-select"] = {
+        --     require("telescope.themes").get_dropdown({}),
+        -- },
     },
 })

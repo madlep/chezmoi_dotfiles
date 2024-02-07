@@ -48,4 +48,4 @@ vim.opt.listchars:append({ -- chars to show if present
 })
 vim.opt.startofline = false -- keep cursor position horizontally when moving up and down between lines
 vim.opt.ruler = true -- show ruler position
-vim.opt.virtualedit = "all" -- allow moving cursor past end of line (useful when scrolling)
+-- vim.opt.virtualedit = "all" -- allow moving cursor past end of line (useful when scrolling)

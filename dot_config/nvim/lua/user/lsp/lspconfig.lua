@@ -8,7 +8,7 @@ for _, server_config_path in ipairs(server_config_paths) do
     if server.version then
         server_name = server_name .. "@" .. server.version
     end
-    if not server.disabled then
+    if not server.enabled == false then
         table.insert(server_names, server_name)
     end
 end
@@ -31,7 +31,7 @@ end
 
 local on_attach = function(client, bufnr)
     require("user.keymaps").lsp_keymaps(bufnr) -- custom key maps defined in user/keymaps.lua
-    require("user.plugin_config.virtualtypes").on_attach(client, bufnr)
+    --require("user.plugin_config.virtualtypes").on_attach(client, bufnr)
 
     if client.server_capabilities.inlayHintProvider then
         vim.lsp.inlay_hint.enable(bufnr, true)
