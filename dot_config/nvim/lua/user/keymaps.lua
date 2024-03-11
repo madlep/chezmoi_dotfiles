@@ -150,6 +150,10 @@ wk.register({
     t = { "<cmd>:Other test<CR>", "open test file" },
 }, { prefix = "<leader>o" })
 
+wk.register({
+    o = { "<cmd>:AerialToggle right<CR>", "Outline toggle" },
+}, { prefix = "<leader>l" })
+
 return {
     -- keymaps that are set up when a language server is attached to the buffer from user.lsp.handler
     lsp_keymaps = function(bufnr)
@@ -177,7 +181,7 @@ return {
                 "Inlay hint toggle",
             },
             -- o = { "<cmd>:SymbolsOutline<CR>", "Outline toggle" },
-            o = { "<cmd>:AerialToggle right<CR>", "Outline toggle" },
+            -- o = { "<cmd>:AerialToggle right<CR>", "Outline toggle" },
             c = {
                 name = "Codelens",
                 r = { "<cmd>lua vim.lsp.codelens.run()<CR>", "Run codelens" },

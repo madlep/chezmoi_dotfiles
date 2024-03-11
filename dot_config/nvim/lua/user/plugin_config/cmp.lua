@@ -30,6 +30,7 @@ local kind_icons = {
     TypeParameter = "",
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
+--
 
 cmp.setup({
     snippet = {
@@ -43,20 +44,22 @@ cmp.setup({
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
         --["<CR>"] = cmp.mapping.confirm({ select = true }),
-        ["<CR>"] = cmp.mapping({
-            i = function(fallback)
-                if cmp.visible() and cmp.get_active_entry() then
-                    cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-                else
-                    fallback()
-                end
-            end,
+        ["<C-CR>"] = cmp.mapping({
+            i = cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+            -- i = function(fallback)
+            --     if cmp.visible() and cmp.get_active_entry() then
+            --         cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+            --     else
+            --         fallback()
+            --     end
+            -- end,
             s = cmp.mapping.confirm({ select = true }),
             c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
         }),
         ["<C-k>"] = cmp.mapping.select_prev_item(),
         ["<C-j>"] = cmp.mapping.select_next_item(),
         ["<Tab>"] = cmp.mapping.select_next_item(),
+        ["<S-Tab>"] = cmp.mapping.select_prev_item(),
     }),
     formatting = {
         fields = { "menu", "abbr", "kind" },
@@ -76,12 +79,12 @@ cmp.setup({
     },
     sources = cmp.config.sources({
         { name = "path" },
-        { name = "nvim_lsp", keyword_length = 2 },
+        { name = "nvim_lsp",                keyword_length = 2 },
         { name = "nvim_lsp_signature_help", keyword_length = 3 },
-        { name = "nvim_lua", keyword_length = 3 },
-        { name = "buffer", keyword_length = 3 },
-        { name = "vsnip", keyword_length = 3 },
-        { name = "calc", keyword_length = 3 },
+        { name = "nvim_lua",                keyword_length = 3 },
+        { name = "buffer",                  keyword_length = 3 },
+        { name = "vsnip",                   keyword_length = 3 },
+        { name = "calc",                    keyword_length = 3 },
         -- { name = "luasnip" },
     }),
     window = {
