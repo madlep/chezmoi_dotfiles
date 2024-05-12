@@ -1,6 +1,5 @@
 -- make uses tabs
 vim.cmd([[ autocmd FileType make set noexpandtab shiftwidth=4 softtabstop=0 ]])
-
 -- lua has 4 space indentation - lua ls needs this set
 vim.cmd([[ autocmd FileType lua set shiftwidth=4 expandtab tabstop=4 softtabstop=4]])
 
@@ -23,3 +22,11 @@ vim.cmd([[
       au WinLeave * if index(ignorecursorlineft, &ft) < 0 | setlocal nocursorline nocursorcolumn | endif
   augroup end
 ]])
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+    desc = 'Highlight when yanking (copying) text',
+    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
