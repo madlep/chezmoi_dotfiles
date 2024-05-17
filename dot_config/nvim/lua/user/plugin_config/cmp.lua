@@ -38,29 +38,81 @@ cmp.setup({
             vim.fn["vsnip#anonymous"](args.body)
         end,
     },
-    mapping = cmp.mapping.preset.insert({
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+    mapping = {
+        ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+        ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
-        --["<CR>"] = cmp.mapping.confirm({ select = true }),
-        ["<C-CR>"] = cmp.mapping({
-            i = cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
-            -- i = function(fallback)
-            --     if cmp.visible() and cmp.get_active_entry() then
-            --         cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-            --     else
-            --         fallback()
-            --     end
-            -- end,
-            s = cmp.mapping.confirm({ select = true }),
-            c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-        }),
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
-        ["<C-j>"] = cmp.mapping.select_next_item(),
-        ["<Tab>"] = cmp.mapping.select_next_item(),
-        ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-    }),
+        ["<c-y>"] = cmp.mapping(
+            cmp.mapping.confirm {
+                behavior = cmp.ConfirmBehavior.Insert,
+                select = true,
+            },
+            { "i", "c" }
+        ),
+        ["<M-y>"] = cmp.mapping(
+            cmp.mapping.confirm {
+                behavior = cmp.ConfirmBehavior.Replace,
+                select = false,
+            },
+            { "i", "c" }
+        ),
+
+        ["<c-space>"] = cmp.mapping {
+            i = cmp.mapping.complete(),
+            c = function(
+                _ --[[fallback]]
+            )
+                if cmp.visible() then
+                    if not cmp.confirm { select = true } then
+                        return
+                    end
+                else
+                    cmp.complete()
+                end
+            end,
+        },
+
+        -- ["<tab>"] = false,
+        ["<tab>"] = cmp.config.disable,
+
+        -- Cody completion
+        ["<c-a>"] = cmp.mapping.complete {
+            config = {
+                sources = {
+                    { name = "cody" },
+                },
+            },
+        },
+
+        -- Testing
+        ["<c-q>"] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = false,
+        },
+    },
+    --     mapping = cmp.mapping.preset.insert({
+    --         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+    --         ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    --         ["<C-Space>"] = cmp.mapping.complete(),
+    --         ["<C-e>"] = cmp.mapping.abort(),
+    --         --["<CR>"] = cmp.mapping.confirm({ select = true }),
+    --         ["<C-CR>"] = cmp.mapping({
+    --             i = cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+    --             -- i = function(fallback)
+    --             --     if cmp.visible() and cmp.get_active_entry() then
+    --             --         cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+    --             --     else
+    --             --         fallback()
+    --             --     end
+    --             -- end,
+    --             s = cmp.mapping.confirm({ select = true }),
+    --             c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+    --         }),
+    --         ["<C-p>"] = cmp.mapping.select_prev_item(),
+    --         ["<C-n>"] = cmp.mapping.select_next_item(),
+    --     }),
     formatting = {
         fields = { "menu", "abbr", "kind" },
         format = function(entry, vim_item)
