@@ -20,6 +20,8 @@ local plugins = function(use)
             "antoinemadec/FixCursorHold.nvim",
             "jfpedroza/neotest-elixir",
             "nvim-neotest/neotest-go",
+            "nvim-neotest/nvim-nio"
+
         },
     })                       -- testing
     use("rgroli/other.nvim") -- code/test alternate file switching
@@ -58,11 +60,12 @@ local plugins = function(use)
     use("hrsh7th/cmp-nvim-lsp-signature-help") -- LSP function signature completion
 
     -- snippets
-    -- TODO fix weird behaviour with custom tabbing
-    -- use("saadparwaiz1/cmp_luasnip") -- snippet completions
-    -- use("L3MON4D3/LuaSnip") -- snippet engine
     use("hrsh7th/cmp-vsnip")
     use("hrsh7th/vim-vsnip")
+    use("hrsh7th/cmp-nvim-lsp")
+    use("hrsh7th/cmp-buffer")
+    use({ "L3MON4D3/LuaSnip", run = "make install_jsregexp" })
+    use("saadparwaiz1/cmp_luasnip")
 
     -- Language Server Protocol
     use("neovim/nvim-lspconfig")
@@ -76,6 +79,9 @@ local plugins = function(use)
         requires = "neovim/nvim-lspconfig",
     }) -- show breadcrumbs to location in LSP hierarchy under cursor
     use("stevearc/aerial.nvim")
+    use("onsails/lspkind.nvim")
+
+
 
     -- Treesitter
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })

@@ -180,7 +180,7 @@ return {
                 "Diagnostics toggle",
             },
             n = {
-                "<cmd>lua vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())<CR>",
+                "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>",
                 "Inlay hint toggle",
             },
             -- o = { "<cmd>:SymbolsOutline<CR>", "Outline toggle" },

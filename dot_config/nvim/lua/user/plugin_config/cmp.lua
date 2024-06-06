@@ -1,6 +1,8 @@
 -- https://raw.githubusercontent.com/LunarVim/Neovim-from-scratch/05-completion/lua/user/cmp.lua
 local cmp = require("cmp")
 
+
+
 --   פּ ﯟ   some other good icons
 local kind_icons = {
     Text = "󰅳",
@@ -33,10 +35,15 @@ local kind_icons = {
 --
 
 cmp.setup({
+    -- snippet = {
+    --     expand = function(args)
+    --         vim.fn["vsnip#anonymous"](args.body)
+    --     end,
+    -- },
     snippet = {
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
-        end,
+            vim.snippet.expand(args.body)
+        end
     },
     mapping = {
         ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
@@ -44,7 +51,7 @@ cmp.setup({
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-e>"] = cmp.mapping.abort(),
-        ["<c-y>"] = cmp.mapping(
+        ["<C-y>"] = cmp.mapping(
             cmp.mapping.confirm {
                 behavior = cmp.ConfirmBehavior.Insert,
                 select = true,
@@ -59,7 +66,8 @@ cmp.setup({
             { "i", "c" }
         ),
 
-        ["<c-space>"] = cmp.mapping {
+
+        ["<C-space>"] = cmp.mapping {
             i = cmp.mapping.complete(),
             c = function(
                 _ --[[fallback]]
@@ -92,27 +100,6 @@ cmp.setup({
             select = false,
         },
     },
-    --     mapping = cmp.mapping.preset.insert({
-    --         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-    --         ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    --         ["<C-Space>"] = cmp.mapping.complete(),
-    --         ["<C-e>"] = cmp.mapping.abort(),
-    --         --["<CR>"] = cmp.mapping.confirm({ select = true }),
-    --         ["<C-CR>"] = cmp.mapping({
-    --             i = cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
-    --             -- i = function(fallback)
-    --             --     if cmp.visible() and cmp.get_active_entry() then
-    --             --         cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-    --             --     else
-    --             --         fallback()
-    --             --     end
-    --             -- end,
-    --             s = cmp.mapping.confirm({ select = true }),
-    --             c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-    --         }),
-    --         ["<C-p>"] = cmp.mapping.select_prev_item(),
-    --         ["<C-n>"] = cmp.mapping.select_next_item(),
-    --     }),
     formatting = {
         fields = { "menu", "abbr", "kind" },
         format = function(entry, vim_item)

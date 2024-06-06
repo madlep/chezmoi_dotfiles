@@ -34,7 +34,7 @@ local on_attach = function(client, bufnr)
     --require("user.plugin_config.virtualtypes").on_attach(client, bufnr)
 
     if client.server_capabilities.inlayHintProvider then
-        vim.lsp.inlay_hint.enable(bufnr, true)
+        vim.lsp.inlay_hint.enable(true)
     end
 
     maybe_refresh_codelens(client)
