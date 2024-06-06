@@ -12,6 +12,7 @@ require("user.plugins")
 
 -- regular setup
 require("user.autocmds")
+require("user.folding")
 require("user.highlights")
 require("user.keymaps")
 require("user.lsp")

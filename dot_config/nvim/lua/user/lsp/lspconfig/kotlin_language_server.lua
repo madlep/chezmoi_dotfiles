@@ -5,9 +5,20 @@ local storage_path = util.path.join(vim.fn.stdpath("data"), "kotlin-language_ser
 vim.fn.mkdir(storage_path, "p")
 
 return {
+    env = {
+        JAVA_OPTS = "-Xmx8g"
+    },
     init_options = {
         storagePath = storage_path,
     },
-    settings = {},
+    settings = {
+        kotlin = {
+            compiler = {
+                jvm = {
+                    target = "17"
+                }
+            }
+        }
+    },
     -- disabled = true,
 }
