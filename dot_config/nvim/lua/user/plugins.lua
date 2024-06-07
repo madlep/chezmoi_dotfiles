@@ -28,7 +28,6 @@ local plugins = function(use)
 
     -- UI
     use("alexghergh/nvim-tmux-navigation")     -- use <C-h><C-j> etc to move between tmux windows and neovim
-    -- use("p00f/nvim-ts-rainbow") -- render rainbow open/close markers for brackets etc TODO errors, and unmaintained
     use("akinsho/bufferline.nvim")             -- nicer buffer list at top
     use("nvim-lualine/lualine.nvim")           -- nicer line at bottom of the screen
     use("lukas-reineke/indent-blankline.nvim") -- show vertical tab markers for indentation level
@@ -43,8 +42,6 @@ local plugins = function(use)
 
     -- themes
     use("folke/tokyonight.nvim")
-    -- use "rmehri01/onenord.nvim"
-    -- use "arcticicestudio/nord-vim"
 
     -- nvim-tree
     use("kyazdani42/nvim-web-devicons")
@@ -63,7 +60,6 @@ local plugins = function(use)
     use("hrsh7th/cmp-vsnip")
     use("hrsh7th/vim-vsnip")
     use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-buffer")
     use({ "L3MON4D3/LuaSnip", run = "make install_jsregexp" })
     use("saadparwaiz1/cmp_luasnip")
 
@@ -71,8 +67,6 @@ local plugins = function(use)
     use("neovim/nvim-lspconfig")
     use("williamboman/mason.nvim")                      -- manage LSP installs
     use("williamboman/mason-lspconfig.nvim")            -- install/manage language servers from within neovim UI
-    -- use("jubnzv/virtual-types.nvim") -- show virtual types hint
-    use("simrat39/symbols-outline.nvim")                -- list functions/modules etc for buffer in side window
     use("https://git.sr.ht/~whynothugo/lsp_lines.nvim") -- show inline LSP diagnostics
     use({
         "SmiteshP/nvim-navic",

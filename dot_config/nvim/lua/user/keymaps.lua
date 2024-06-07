@@ -183,8 +183,6 @@ return {
                 "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>",
                 "Inlay hint toggle",
             },
-            -- o = { "<cmd>:SymbolsOutline<CR>", "Outline toggle" },
-            -- o = { "<cmd>:AerialToggle right<CR>", "Outline toggle" },
             c = {
                 name = "Codelens",
                 r = { "<cmd>lua vim.lsp.codelens.run()<CR>", "Run codelens" },
