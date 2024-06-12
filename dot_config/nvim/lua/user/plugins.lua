@@ -71,7 +71,6 @@ local plugins = function(use)
         "SmiteshP/nvim-navic",
         requires = "neovim/nvim-lspconfig",
     }) -- show breadcrumbs to location in LSP hierarchy under cursor
-    use("stevearc/aerial.nvim")
     use("onsails/lspkind.nvim")
 
 

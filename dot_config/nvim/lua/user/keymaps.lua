@@ -94,15 +94,14 @@ wk.register({
 -- diagnostics
 wk.register({
     name = "diagnostics",
-    d = { "<cmd>TroubleToggle document_diagnostics<CR>", "Document diagnostics" },
-    w = { "<cmd>TroubleToggle workspace_diagnostics<CR>", "Workspace diagnostics" },
-    x = { "<cmd>TroubleToggle<cr>", "Toggle trouble list" },
+    d = { "<cmd>Trouble toggle diagnostics focus=true filter.buf=0<CR>", "Document diagnostics" },
+    w = { "<cmd>Trouble toggle diagnostics focus=true<CR>", "Workspace diagnostics" },
     f = {
         "<cmd>lua vim.diagnostic.open_float({focus = true, focusable = true, height = 50, width = 120})<CR>",
         "Open diagnostic float",
     },
-    p = { vim.diagnostic.jump({ count = 1 }), "Go to previous diagnostic message" },
-    n = { vim.diagnostic.jump({ count = -1 }), "Go to next diagnostic message" },
+    p = { function() vim.diagnostic.jump({ count = 1 }) end, "Go to previous diagnostic message" },
+    n = { function() vim.diagnostic.jump({ count = -1 }) end, "Go to next diagnostic message" },
     q = { vim.diagnostic.setloclist, "Open diagnostic quickfix list" },
 }, { prefix = "<leader>x" })
 
@@ -154,7 +153,7 @@ wk.register({
 }, { prefix = "<leader>o" })
 
 wk.register({
-    o = { "<cmd>:AerialToggle right<CR>", "Outline toggle" },
+    o = { "<cmd>Trouble toggle lsp_document_symbols win.position=right follow=true<CR>", "Outline toggle" },
 }, { prefix = "<leader>l" })
 
 return {
@@ -167,7 +166,9 @@ return {
         wk.register({
             name = "language server",
             d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Goto definition" },
-            r = { "<cmd>lua vim.lsp.buf.references()<CR>", "Show references" },
+            rr = { "<cmd>Trouble toggle lsp_references follow=true<CR>", "References" },
+            ri = { "<cmd>Trouble toggle lsp_incoming_calls follow=true<CR>", "Incoming calls" },
+            ro = { "<cmd>Trouble toggle lsp_outgoing_calls follow=true<CR>", "Outgoing calls" },
             h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Show hover info" },
             D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Goto declaration" },
             i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto implementation" },
