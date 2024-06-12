@@ -59,7 +59,6 @@ local plugins = function(use)
     -- snippets
     use("hrsh7th/cmp-vsnip")
     use("hrsh7th/vim-vsnip")
-    use("hrsh7th/cmp-nvim-lsp")
     use({ "L3MON4D3/LuaSnip", run = "make install_jsregexp" })
     use("saadparwaiz1/cmp_luasnip")
 

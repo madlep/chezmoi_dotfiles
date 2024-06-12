@@ -101,8 +101,8 @@ wk.register({
         "<cmd>lua vim.diagnostic.open_float({focus = true, focusable = true, height = 50, width = 120})<CR>",
         "Open diagnostic float",
     },
-    p = { vim.diagnostic.goto_prev, "Go to previous diagnostic message" },
-    n = { vim.diagnostic.goto_next, "Go to next diagnostic message" },
+    p = { vim.diagnostic.jump({ count = 1 }), "Go to previous diagnostic message" },
+    n = { vim.diagnostic.jump({ count = -1 }), "Go to next diagnostic message" },
     q = { vim.diagnostic.setloclist, "Open diagnostic quickfix list" },
 }, { prefix = "<leader>x" })
 
