@@ -4,6 +4,7 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevel = 99
 
 function CustomFoldtext()
+    local fold_indicator = ""
     local start_line = vim.fn.getline(vim.v.foldstart)
 
     -- folds have to be spaces, so convert from tabs, otherwise display is messed up
@@ -12,9 +13,12 @@ function CustomFoldtext()
 
     -- put a "> " before the fold if there is room
     local prefix = ""
-    prefix, start_line = start_line:match("^(%s*%s%s)(.*)")
-    if prefix then
-        prefix = prefix:gsub("^(%s*)%s%s$", "%1> ")
+    local indicator = ""
+    local parts = { start_line:match("^(%s*)(%s%s)(.*)") }
+    if parts then
+        prefix = parts[1]
+        indicator = fold_indicator .. " "
+        start_line = parts[3]
     end
 
     local num_lines = vim.v.foldend - vim.v.foldstart - 1
@@ -29,10 +33,11 @@ function CustomFoldtext()
     local end_line = vim.fn.getline(vim.v.foldend)
 
     return {
-        { prefix,                                         "Comment" },
-        { start_line,                                     "Folded" },
-        { ' ... (' .. num_lines .. ' ' .. line_s .. ') ', "Comment" },
-        { end_line:gsub("^%s*", ""),                      "Folded" }
+        { prefix,                                        "Folded" },
+        { indicator,                                     "Comment" },
+        { start_line,                                    "Folded" },
+        { ' (' .. num_lines .. ' ' .. line_s .. ')... ', "Comment" },
+        { end_line:gsub("^%s*", ""),                     "Folded" }
     }
 end
 
