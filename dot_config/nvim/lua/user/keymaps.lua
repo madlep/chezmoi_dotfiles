@@ -153,7 +153,7 @@ wk.register({
 }, { prefix = "<leader>o" })
 
 wk.register({
-    o = { "<cmd>Trouble toggle lsp_document_symbols win.position=right follow=true<CR>", "Outline toggle" },
+    o = { "<cmd>Trouble toggle lsp_document_symbols win.position=right win.size.width=0.2 follow=false<CR>", "Outline toggle" },
 }, { prefix = "<leader>l" })
 
 return {
@@ -166,20 +166,14 @@ return {
         wk.register({
             name = "language server",
             d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Goto definition" },
-            rr = { "<cmd>Trouble toggle lsp_references follow=true<CR>", "References" },
-            ri = { "<cmd>Trouble toggle lsp_incoming_calls follow=true<CR>", "Incoming calls" },
-            ro = { "<cmd>Trouble toggle lsp_outgoing_calls follow=true<CR>", "Outgoing calls" },
+            rr = { "<cmd>Trouble toggle lsp_references follow=false focus=true<CR>", "References" },
+            ri = { "<cmd>Trouble toggle lsp_incoming_calls follow=false focus=true<CR>", "Incoming calls" },
+            ro = { "<cmd>Trouble toggle lsp_outgoing_calls follow=false focus=true<CR>", "Outgoing calls" },
             h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Show hover info" },
             D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Goto declaration" },
             i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto implementation" },
             s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help" },
-            l = {
-                function()
-                    require("lsp_lines").toggle()
-                    vim.diagnostic.config({ virtual_text = not vim.diagnostic.config().virtual_text })
-                end,
-                "Diagnostics toggle",
-            },
+            l = { require("user.diagnostic").virtual_lines_toggle, "Diagnostics toggle" },
             n = {
                 "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>",
                 "Inlay hint toggle",
