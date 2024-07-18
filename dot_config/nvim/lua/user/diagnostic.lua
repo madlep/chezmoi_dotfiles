@@ -65,23 +65,14 @@ local diag_states = {
     ["disabled"] = { next_state = "virtual_lines", f = on_disabled },
 }
 
-local function init_state()
-    local state = diag_states[diag_state]
-    if not state then
-        error("unexpected diag_state:" .. diag_state)
-    end
-
-    state.f()
+local function init_state(state)
+    assert(diag_states[state], "unexpected state:" .. state).f()
 end
 
 M.virtual_lines_toggle = function()
-    local new_state = diag_states[diag_state]
-    if not new_state then
-        error("unexpected diag_state:" .. diag_state)
-    end
-
-    diag_state = new_state.next_state
-    init_state()
+    local new_state = assert(diag_states[diag_state], "unexpected diag_state:" .. diag_state).next_state
+    init_state(new_state)
+    diag_state = new_state
 end
 
 return M

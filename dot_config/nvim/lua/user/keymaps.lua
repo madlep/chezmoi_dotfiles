@@ -175,7 +175,7 @@ return {
             s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help" },
             l = { require("user.diagnostic").virtual_lines_toggle, "Diagnostics toggle" },
             n = {
-                "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>",
+                "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({bufnr = 0}), {bufnr = 0})<CR>",
                 "Inlay hint toggle",
             },
             c = {
