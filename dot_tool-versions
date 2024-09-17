@@ -11,3 +11,4 @@ yarn 1.22.19
 java openjdk-20.0.2
 maven 3.9.3
 gleam 1.0.0
+cue 0.10.0

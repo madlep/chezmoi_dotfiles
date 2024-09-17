@@ -1,5 +1,6 @@
 brew "asdf"
 brew "awk" 
+brew "bat"
 brew "chezmoi"
 brew "codespell"
 brew "ctags"
