@@ -43,8 +43,11 @@ local plugins = function(use)
     -- themes
     use("folke/tokyonight.nvim")
 
-    -- nvim-tree
+    -- icons
     use("kyazdani42/nvim-web-devicons")
+    use("echasnovski/mini.icons")
+
+    -- nvim-tree
     use("kyazdani42/nvim-tree.lua")
 
     -- cmp plugins

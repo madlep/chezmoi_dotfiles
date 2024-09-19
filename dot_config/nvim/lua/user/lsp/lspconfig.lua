@@ -30,13 +30,6 @@ local maybe_refresh_codelens = function(client)
 end
 
 local on_attach = function(client, bufnr)
-    require("user.keymaps").lsp_keymaps(bufnr) -- custom key maps defined in user/keymaps.lua
-    --require("user.plugin_config.virtualtypes").on_attach(client, bufnr)
-
-    -- if client.server_capabilities.inlayHintProvider then -- disable, this is annoying
-    --     vim.lsp.inlay_hint.enable(true, {bufnr = 0})
-    -- end
-
     maybe_refresh_codelens(client)
     -- workaround to refresh codelens in case it doesn't show up automatically
     vim.defer_fn(function()

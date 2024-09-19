@@ -35,104 +35,97 @@ keymap("x", "<Down>", ":move '>+1<CR>gv-gv", opts)
 -- buffers
 keymap("n", "<S-l>", "<cmd>lua require('user.buffer').safe_bnext()<CR>", opts)
 keymap("n", "<S-h>", "<cmd>lua require('user.buffer').safe_bprev()<CR>", opts)
-wk.register({
-    name = "Buffer",
-    b = { ":Bdelete<CR>", "Delete buffer" },
-    t = { ":BufferLineTogglePin<CR>", "Pin buffer" },
-    o = { ":%bd|e#|bd#<CR>", "Close other buffers" },
-}, { prefix = "<leader>b" })
+wk.add({
+    { "<leader>b",  group = "Buffer" },
+    { "<leader>bb", ":Bdelete<CR>",             desc = "Delete buffer" },
+    { "<leader>bo", ":%bd|e#|bd#<CR>",          desc = "Close other buffers" },
+    { "<leader>bt", ":BufferLineTogglePin<CR>", desc = "Pin buffer" },
+})
 
 -- searching
-wk.register({
-    name = "Find",
-    f = { "<cmd>lua require('telescope.builtin').find_files()<CR>", "Find files by name" },
-    g = { "<cmd>lua require('telescope.builtin').live_grep()<CR>", "Search" },
-    t = { "<cmd>lua require('telescope.builtin').builtin()<CR>", "Telescope builtins" },
-    a = { "<cmd>lua require('telescope.builtin').grep_string()<CR>", "Search string under cursor" },
-    b = { "<cmd>lua require('telescope.builtin').buffers()<CR>", "Search buffers" },
-    j = { "<cmd>lua require('telescope.builtin').jumplist()<CR>", "Jumplist" },
-    r = { "<cmd>lua require('telescope.builtin').resume()<CR>", "Resume previous" },
-    h = { ":Telescope harpoon marks<CR>", "harpoon marks" },
-    d = {
-        name = "dir-telescope",
-        f = { "<cmd>Telescope dir find_files<CR>", "Find files in dir by name" },
-        g = { "<cmd>Telescope dir live_grep<CR>", "Search in dir" },
-    },
-    s = {
-        name = "spectre (search/replace)",
-        g = { "<cmd>lua require('spectre').open()<CR>", "Global search/replace" },
-        f = { "<cmd>lua require('spectre').open_file_search()<CR>", "File search/replace" },
-    },
-    ["/"] = { ":nohlsearch<CR>", "Clear search highlights" },
-}, { prefix = "<leader>f" })
+wk.add({
+    { "<leader>f",   group = "Find" },
+    { "<leader>f/",  ":nohlsearch<CR>",                                         desc = "Clear search highlights" },
+    { "<leader>fa",  "<cmd>lua require('telescope.builtin').grep_string()<CR>", desc = "Search string under cursor" },
+    { "<leader>fb",  "<cmd>lua require('telescope.builtin').buffers()<CR>",     desc = "Search buffers" },
+    { "<leader>fd",  group = "dir-telescope" },
+    { "<leader>fdf", "<cmd>Telescope dir find_files<CR>",                       desc = "Find files in dir by name" },
+    { "<leader>fdg", "<cmd>Telescope dir live_grep<CR>",                        desc = "Search in dir" },
+    { "<leader>ff",  "<cmd>lua require('telescope.builtin').find_files()<CR>",  desc = "Find files by name" },
+    { "<leader>fg",  "<cmd>lua require('telescope.builtin').live_grep()<CR>",   desc = "Search" },
+    { "<leader>fh",  ":Telescope harpoon marks<CR>",                            desc = "harpoon marks" },
+    { "<leader>fj",  "<cmd>lua require('telescope.builtin').jumplist()<CR>",    desc = "Jumplist" },
+    { "<leader>fr",  "<cmd>lua require('telescope.builtin').resume()<CR>",      desc = "Resume previous" },
+    { "<leader>fs",  group = "spectre (search/replace)" },
+    { "<leader>fsf", "<cmd>lua require('spectre').open_file_search()<CR>",      desc = "File search/replace" },
+    { "<leader>fsg", "<cmd>lua require('spectre').open()<CR>",                  desc = "Global search/replace" },
+    { "<leader>ft",  "<cmd>lua require('telescope.builtin').builtin()<CR>",     desc = "Telescope builtins" },
+})
 
 -- harpoon navigation
-wk.register({
-    name = "Harpoon",
-    h = { "<cmd>lua require('harpoon.mark').toggle_file()<CR>", "toggle harpoon mark" },
-    f = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "add harpoon mark" },
-    d = { "<cmd>lua require('harpoon.mark').rm_file()<CR>", "remove harpoon mark" },
-    D = { "<cmd>lua require('harpoon.mark').clear_all()<CR>", "clear all harpoon marks" },
-    q = { "<cmd>lua require('harpoon.mark').to_quickfix_list()<CR>:copen<CR>", "open harpoon marks in quicklist" },
-    n = { "<cmd>lua require('harpoon.ui').nav_next()<CR>", "next harpoon" },
-    p = { "<cmd>lua require('harpoon.ui').nav_prev()<CR>", "prev harpoon" },
-}, { prefix = "<leader>h" })
+wk.add(
+    {
+        { "<leader>h",  group = "Harpoon" },
+        { "<leader>hD", "<cmd>lua require('harpoon.mark').clear_all()<CR>",                  desc = "clear all harpoon marks" },
+        { "<leader>hd", "<cmd>lua require('harpoon.mark').rm_file()<CR>",                    desc = "remove harpoon mark" },
+        { "<leader>hf", "<cmd>lua require('harpoon.mark').add_file()<CR>",                   desc = "add harpoon mark" },
+        { "<leader>hh", "<cmd>lua require('harpoon.mark').toggle_file()<CR>",                desc = "toggle harpoon mark" },
+        { "<leader>hn", "<cmd>lua require('harpoon.ui').nav_next()<CR>",                     desc = "next harpoon" },
+        { "<leader>hp", "<cmd>lua require('harpoon.ui').nav_prev()<CR>",                     desc = "prev harpoon" },
+        { "<leader>hq", "<cmd>lua require('harpoon.mark').to_quickfix_list()<CR>:copen<CR>", desc = "open harpoon marks in quicklist" },
+    })
 
 -- use beacon for search navigation in docs
-keymap("n", "<leader><leader>", ":Beacon<cr>", opts)
-keymap("n", "n", "n:Beacon<cr>", opts)
-keymap("n", "N", "N:Beacon<cr>", opts)
-keymap("n", "*", "*:Beacon<cr>", opts)
-keymap("n", "#", "#:Beacon<cr>", opts)
+wk.add({
+    {"<leader><leader>", "<cmd>lua require('beacon').highlight_cursor()<CR>", desc = "highlight cursor" },
+})
 
 -- nvim tree
-wk.register({
-    name = "Directory tree",
-    d = { ":NvimTreeToggle<CR>", "Toggle Tree" },
-    f = { ":NvimTreeFindFile<CR>", "Focus on current file" },
-}, { prefix = "<leader>d" })
+wk.add({
+    { "<leader>d",  group = "Directory tree" },
+    { "<leader>dd", ":NvimTreeToggle<CR>",   desc = "Toggle Tree" },
+    { "<leader>df", ":NvimTreeFindFile<CR>", desc = "Focus on current file" },
+})
 
 -- diagnostics
-wk.register({
-    name = "diagnostics",
-    d = { "<cmd>Trouble toggle diagnostics focus=true filter.buf=0<CR>", "Document diagnostics" },
-    w = { "<cmd>Trouble toggle diagnostics focus=true<CR>", "Workspace diagnostics" },
-    f = {
-        "<cmd>lua vim.diagnostic.open_float({focus = true, focusable = true, height = 50, width = 120})<CR>",
-        "Open diagnostic float",
-    },
-    p = { function() vim.diagnostic.jump({ count = 1 }) end, "Go to previous diagnostic message" },
-    n = { function() vim.diagnostic.jump({ count = -1 }) end, "Go to next diagnostic message" },
-    q = { vim.diagnostic.setloclist, "Open diagnostic quickfix list" },
-}, { prefix = "<leader>x" })
+wk.add({
+    { "<leader>x",  group = "diagnostics" },
+    { "<leader>xd", "<cmd>Trouble toggle diagnostics focus=true filter.buf=0<CR>",                                        desc = "Document diagnostics" },
+    { "<leader>xf", "<cmd>lua vim.diagnostic.open_float({focus = true, focusable = true, height = 50, width = 120})<CR>", desc = "Open diagnostic float" },
+    { "<leader>xn", function() vim.diagnostic.jump({ count = -1 }) end,                                                   desc = "Go to next diagnostic message" },
+    { "<leader>xp", function() vim.diagnostic.jump({ count = 1 }) end,                                                    desc = "Go to previous diagnostic message" },
+    { "<leader>xq", vim.diagnostic.setloclist,                                                                            desc = "Open diagnostic quickfix list" },
+    { "<leader>xw", "<cmd>Trouble toggle diagnostics focus=true<CR>",                                                     desc = "Workspace diagnostics" }
+})
 
 -- git
-wk.register({
-    name = "git",
-    t = { "<cmd>:GitBlameToggle<CR>", "toggle blame" },
-    o = { "<cmd>:GitBlameOpenCommitURL<CR>", "open commit in browser" },
-    y = { "<cmd>:GitBlameCopySHA<CR>", "copy commit SHA to clipboard" },
-    c = { "<cmd>:Telescope git_commits<CR>", "repo git commits" },
-    b = { "<cmd>:Telescope git_bcommits<CR>", "buffer git commits" },
-    x = { "<cmd>:GitConflictListQf<CR>", "conflict list" },
-    [">"] = { "<cmd>:GitConflictChooseTheirs<CR>", "conflict - choose THEIR'S" },
-    ["<"] = { "<cmd>:GitConflictChooseOurs<CR>", "conflict - choose OUR'S" },
-    p = {
-        name = "Octo pr",
-        l = { "<cmd>:Octo pr list<CR>", "Octo pr list" },
-        c = { "<cmd>:Octo pr checkout<CR>", "Octo pr checkout" },
-        h = { "<cmd>:Octo pr changes<CR>", "Octo pr changes" },
-        d = { "<cmd>:Octo pr diff<CR>", "Octo pr diff" },
-        m = { "<cmd>:Octo pr commits<CR>", "Octo pr commits" },
-    },
-}, { prefix = "<leader>g" })
+wk.add(
+    {
+        { "<leader>g",   group = "git" },
+        { "<leader>g<",  "<cmd>:GitConflictChooseOurs<CR>",   desc = "conflict - choose OUR'S" },
+        { "<leader>g>",  "<cmd>:GitConflictChooseTheirs<CR>", desc = "conflict - choose THEIR'S" },
+        { "<leader>gb",  "<cmd>:Telescope git_bcommits<CR>",  desc = "buffer git commits" },
+        { "<leader>gc",  "<cmd>:Telescope git_commits<CR>",   desc = "repo git commits" },
+        { "<leader>go",  "<cmd>:GitBlameOpenCommitURL<CR>",   desc = "open commit in browser" },
+        { "<leader>gp",  group = "Octo pr" },
+        { "<leader>gpc", "<cmd>:Octo pr checkout<CR>",        desc = "Octo pr checkout" },
+        { "<leader>gpd", "<cmd>:Octo pr diff<CR>",            desc = "Octo pr diff" },
+        { "<leader>gph", "<cmd>:Octo pr changes<CR>",         desc = "Octo pr changes" },
+        { "<leader>gpl", "<cmd>:Octo pr list<CR>",            desc = "Octo pr list" },
+        { "<leader>gpm", "<cmd>:Octo pr commits<CR>",         desc = "Octo pr commits" },
+        { "<leader>gt",  "<cmd>:GitBlameToggle<CR>",          desc = "toggle blame" },
+        { "<leader>gx",  "<cmd>:GitConflictListQf<CR>",       desc = "conflict list" },
+        { "<leader>gy",  "<cmd>:GitBlameCopySHA<CR>",         desc = "copy commit SHA to clipboard" },
+    }
+)
 
 -- tests
-wk.register({
-    name = "test",
-    t = { "<cmd>lua require('neotest').summary.toggle()<CR>", "test summary" },
-    a = { "<cmd>lua require('neotest').run.run({suite = true})<CR>", "run all tests" },
-    r = {
+wk.add({
+    { "<leader>t",  group = "test" },
+    { "<leader>ta", "<cmd>lua require('neotest').run.run({suite = true})<CR>", desc = "run all tests" },
+    { "<leader>tn", "<cmd>lua require('neotest').run.run()<CR>",               desc = "run nearest test" },
+    {
+        "<leader>tr",
         function()
             local other = require("other-nvim")
             local neotest = require("neotest")
@@ -142,65 +135,36 @@ wk.register({
             other.open("test")
             neotest.run.run(vim.fn.expand("%"))
         end,
-        "run current test",
+        desc = "run current test"
     },
-    n = { "<cmd>lua require('neotest').run.run()<CR>", "run nearest test" },
-}, { prefix = "<leader>t" })
+    { "<leader>tt", "<cmd>lua require('neotest').summary.toggle()<CR>", desc = "test summary" },
+})
 
 -- other file
-wk.register({
-    o = { "<cmd>:Other<CR>", "open other file" },
-    t = { "<cmd>:Other test<CR>", "open test file" },
-}, { prefix = "<leader>o" })
+wk.add({
+    { "<leader>oo", "<cmd>:Other<CR>",      desc = "open other file" },
+    { "<leader>ot", "<cmd>:Other test<CR>", desc = "open test file" },
+})
 
-wk.register({
-    o = { "<cmd>Trouble toggle lsp_document_symbols win.position=right win.size.width=0.2 follow=false<CR>", "Outline toggle" },
-}, { prefix = "<leader>l" })
+-- LSP / code navigation
+wk.add(
 
-return {
-    -- keymaps that are set up when a language server is attached to the buffer from user.lsp.handler
-    lsp_keymaps = function(bufnr)
-        wk.register({
-            -- ["<C-k>"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "LSP Hover" },
-            gd = { "<cmd>lua vim.lsp.buf.definition()<CR>", "go to LSP definition" },
-        })
-        wk.register({
-            name = "language server",
-            d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Goto definition" },
-            rr = { "<cmd>Trouble toggle lsp_references follow=false focus=true<CR>", "References" },
-            ri = { "<cmd>Trouble toggle lsp_incoming_calls follow=false focus=true<CR>", "Incoming calls" },
-            ro = { "<cmd>Trouble toggle lsp_outgoing_calls follow=false focus=true<CR>", "Outgoing calls" },
-            h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Show hover info" },
-            D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Goto declaration" },
-            i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto implementation" },
-            s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help" },
-            l = { require("user.diagnostic").virtual_lines_toggle, "Diagnostics toggle" },
-            n = {
-                "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({bufnr = 0}), {bufnr = 0})<CR>",
-                "Inlay hint toggle",
-            },
-            c = {
-                name = "Codelens",
-                r = { "<cmd>lua vim.lsp.codelens.run()<CR>", "Run codelens" },
-                t = { "<cmd>lua require('user.lsp.codelens').toggle()<CR>", "Toggle codelens" },
-            },
-            -- [">"] = { "<cmd>:Lspsaga incoming_calls<CR>", "incoming calls" },
-            -- ["<"] = { "<cmd>:Lspsaga outgoing_calls<CR>", "outgoing calls" },
-        }, { prefix = "<leader>l", buffer = bufnr })
-    end,
-
-    -- lspsaga_keymaps = function()
-    --     return {
-    --         outline = {
-    --             keys = {
-    --                 jump = "<CR>",
-    --             },
-    --         },
-    --         callhierarchy = {
-    --             keys = {
-    --                 toggle_or_req = "o",
-    --             },
-    --         },
-    --     }
-    -- end,
-}
+    {
+        { "gd",          "<cmd>lua vim.lsp.buf.definition()<CR>",                                                               desc = "go to LSP definition" },
+        { "<leader>l",   group = "language server" },
+        { "<leader>lD",  "<cmd>lua vim.lsp.buf.declaration()<CR>",                                                              desc = "Goto declaration" },
+        { "<leader>lc",  group = "Codelens" },
+        { "<leader>lcr", "<cmd>lua vim.lsp.codelens.run()<CR>",                                                                 desc = "Run codelens" },
+        { "<leader>lct", "<cmd>lua require('user.lsp.codelens').toggle()<CR>",                                                  desc = "Toggle codelens" },
+        { "<leader>ld",  "<cmd>lua vim.lsp.buf.definition()<CR>",                                                               desc = "Goto definition" },
+        { "<leader>lh",  "<cmd>lua vim.lsp.buf.hover()<CR>",                                                                    desc = "Show hover info" },
+        { "<leader>li",  "<cmd>lua vim.lsp.buf.implementation()<CR>",                                                           desc = "Goto implementation" },
+        { "<leader>ll",  require("user.diagnostic").virtual_lines_toggle,                                                       desc = "Diagnostics toggle" },
+        { "<leader>ln",  "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({bufnr = 0}), {bufnr = 0})<CR>", desc = "Inlay hint toggle" },
+        { "<leader>lo",  "<cmd>Trouble toggle lsp_document_symbols win.position=right win.size.width=0.2 follow=false<CR>",     desc = "Outline toggle" },
+        { "<leader>lri", "<cmd>Trouble toggle lsp_incoming_calls follow=false focus=true<CR>",                                  desc = "Incoming calls" },
+        { "<leader>lro", "<cmd>Trouble toggle lsp_outgoing_calls follow=false focus=true<CR>",                                  desc = "Outgoing calls" },
+        { "<leader>lrr", "<cmd>Trouble toggle lsp_references follow=false focus=true<CR>",                                      desc = "References" },
+        { "<leader>ls",  "<cmd>lua vim.lsp.buf.signature_help()<CR>",                                                           desc = "Signature help" },
+    }
+)
