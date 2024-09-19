@@ -29,7 +29,7 @@ local maybe_refresh_codelens = function(client)
     end
 end
 
-local on_attach = function(client, bufnr)
+local on_attach = function(client, _)
     maybe_refresh_codelens(client)
     -- workaround to refresh codelens in case it doesn't show up automatically
     vim.defer_fn(function()
