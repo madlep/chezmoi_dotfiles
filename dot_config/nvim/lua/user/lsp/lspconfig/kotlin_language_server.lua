@@ -6,7 +6,7 @@ vim.fn.mkdir(storage_path, "p")
 
 return {
     env = {
-        JAVA_OPTS = "-Xmx8g"
+        JAVA_OPTS = "-Xmx12g"
     },
     init_options = {
         storagePath = storage_path,

@@ -50,6 +50,7 @@ wk.register({
     t = { "<cmd>lua require('telescope.builtin').builtin()<CR>", "Telescope builtins" },
     a = { "<cmd>lua require('telescope.builtin').grep_string()<CR>", "Search string under cursor" },
     b = { "<cmd>lua require('telescope.builtin').buffers()<CR>", "Search buffers" },
+    j = { "<cmd>lua require('telescope.builtin').jumplist()<CR>", "Jumplist" },
     r = { "<cmd>lua require('telescope.builtin').resume()<CR>", "Resume previous" },
     h = { ":Telescope harpoon marks<CR>", "harpoon marks" },
     d = {
