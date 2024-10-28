@@ -1,3 +1,4 @@
+[general]
 import = ["/Users/jdoherty/.config/alacritty/tokyonight_night.toml"]
 live_config_reload = true
 

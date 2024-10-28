@@ -42,7 +42,6 @@ brew "z"
 brew "zsh"
 brew "zsh-completions"
 
-tap "homebrew/cask-fonts"
 cask "font-hack-nerd-font"
 
 # don't need these by default
