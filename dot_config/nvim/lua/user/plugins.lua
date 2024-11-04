@@ -110,6 +110,18 @@ local plugins = function(use)
 
     -- language specific
     use("sirosen/vim-rockstar") -- rock star syntax highlighting
+
+    -- note taking
+    use({
+        "epwalsh/obsidian.nvim",
+        tag = "*", -- recommended, use latest release instead of latest commit
+        requires = {
+            -- Required.
+            "nvim-lua/plenary.nvim",
+
+            -- see below for full list of optional dependencies 👇
+        }
+    })
 end
 ------------------------
 -- ...Plugins end here

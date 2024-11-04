@@ -53,3 +53,5 @@ vim.opt.ruler = true        -- show ruler position
 vim.g.have_nerd_font = true
 vim.opt.breakindent = true
 vim.opt.inccommand = 'split'
+
+vim.opt.conceallevel = 1
