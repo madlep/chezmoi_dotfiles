@@ -54,4 +54,4 @@ vim.g.have_nerd_font = true
 vim.opt.breakindent = true
 vim.opt.inccommand = 'split'
 
-vim.opt.conceallevel = 1
+vim.opt.conceallevel = 2
