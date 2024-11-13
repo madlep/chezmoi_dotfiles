@@ -77,7 +77,7 @@ wk.add(
 
 -- use beacon for search navigation in docs
 wk.add({
-    {"<leader><leader>", "<cmd>lua require('beacon').highlight_cursor()<CR>", desc = "highlight cursor" },
+    { "<leader><leader>", "<cmd>lua require('beacon').highlight_cursor()<CR>", desc = "highlight cursor" },
 })
 
 -- nvim tree
@@ -166,5 +166,28 @@ wk.add(
         { "<leader>lro", "<cmd>Trouble toggle lsp_outgoing_calls follow=false focus=true<CR>",                                  desc = "Outgoing calls" },
         { "<leader>lrr", "<cmd>Trouble toggle lsp_references follow=false focus=true<CR>",                                      desc = "References" },
         { "<leader>ls",  "<cmd>lua vim.lsp.buf.signature_help()<CR>",                                                           desc = "Signature help" },
+    }
+)
+
+-- obsidian notes
+wk.add(
+    {
+        { "<leader>n",   group = "notes" },
+        { "<leader>nn",  "<cmd>:ObsidianNew<CR>",         desc = "new note" },
+        { "<leader>nt",  "<cmd>:ObsidianTags<CR>",        desc = "tags" },
+        { "<leader>nq",  "<cmd>:ObsidianQuickSwitch<CR>", desc = "quick switch" },
+        { "<leader>ns",  "<cmd>:ObsidianSearch<CR>",      desc = "search" },
+
+        { "<leader>nl",  group = "notes links" },
+        { "<leader>nll", "<cmd>:ObsidianLinks<CR>",       desc = "current buffer links" },
+        { "<leader>nlb", "<cmd>:ObsidianBacklinks<CR>",   desc = "backlinks" },
+        { "<leader>nle", "<cmd>:ObsidianExtractNote<CR>", desc = "extract selection to new note", mode = { "v" } },
+
+        { "<leader>nd",  group = "daily notes" },
+        { "<leader>ndd", "<cmd>:ObsidianToday<CR>",       desc = "today" },
+        { "<leader>ndl", "<cmd>:ObsidianDailies<CR>",     desc = "list dailies" },
+
+        -- ObsidianExtractNote
+
     }
 )
