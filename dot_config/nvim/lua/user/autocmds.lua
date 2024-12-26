@@ -1,5 +1,8 @@
 -- auto format on save
-vim.cmd([[ autocmd BufWritePre *.ex,*.exs,*.rb,*.lua,*.rs,*.go,*.ts lua vim.lsp.buf.format()]])
+vim.cmd([[ autocmd BufWritePre *.ex,*.exs,*.rb,*.lua,*.rs,*.go lua vim.lsp.buf.format()]])
+
+-- force using eslint as ts-ls uses wrong formatting sometimes
+vim.cmd([[ autocmd BufWritePre *.ts lua vim.lsp.buf.format({name = "eslint"})]])
 --
 -- hide cursorline on inactive window
 vim.cmd([[
