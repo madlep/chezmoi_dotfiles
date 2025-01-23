@@ -12,19 +12,7 @@ local plugins = function(use)
     use("chrisbra/csv.vim")         -- CSV editing
     use("kevinhwang91/nvim-bqf")    -- better quick fix
     use("machakann/vim-sandwich")   -- add/delete surrounding ({[]}) etc
-    use({
-        "nvim-neotest/neotest",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-            "antoinemadec/FixCursorHold.nvim",
-            "jfpedroza/neotest-elixir",
-            "nvim-neotest/neotest-go",
-            "nvim-neotest/nvim-nio"
-
-        },
-    })                       -- testing
-    use("rgroli/other.nvim") -- code/test alternate file switching
+    use("rgroli/other.nvim")        -- code/test alternate file switching
 
     -- UI
     use("alexghergh/nvim-tmux-navigation")     -- use <C-h><C-j> etc to move between tmux windows and neovim
@@ -70,10 +58,6 @@ local plugins = function(use)
     use("williamboman/mason.nvim")                      -- manage LSP installs
     use("williamboman/mason-lspconfig.nvim")            -- install/manage language servers from within neovim UI
     use("https://git.sr.ht/~whynothugo/lsp_lines.nvim") -- show inline LSP diagnostics
-    use({
-        "SmiteshP/nvim-navic",
-        requires = "neovim/nvim-lspconfig",
-    }) -- show breadcrumbs to location in LSP hierarchy under cursor
     use("onsails/lspkind.nvim")
 
 

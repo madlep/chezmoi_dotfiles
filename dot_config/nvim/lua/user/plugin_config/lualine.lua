@@ -76,13 +76,6 @@ local full_filename = {
     symbols = {},
 }
 
-local navic = {
-    "navic",
-    color_correction = "dynamic",
-    navic_opts = nil,
-    cond = require("nvim-navic").is_available,
-    draw_empty = true,
-}
 
 -- local gb = require("gitblame")
 -- local gitblame = {
@@ -120,7 +113,7 @@ lualine.setup({
     tabline = {},
     winbar = {
         lualine_a = { full_filename },
-        lualine_b = { navic },
+        lualine_b = {},
         lualine_c = {},
         lualine_x = {},
         lualine_y = {},

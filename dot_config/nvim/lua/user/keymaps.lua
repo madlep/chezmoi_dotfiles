@@ -119,27 +119,6 @@ wk.add(
     }
 )
 
--- tests
-wk.add({
-    { "<leader>t",  group = "test" },
-    { "<leader>ta", "<cmd>lua require('neotest').run.run({suite = true})<CR>", desc = "run all tests" },
-    { "<leader>tn", "<cmd>lua require('neotest').run.run()<CR>",               desc = "run nearest test" },
-    {
-        "<leader>tr",
-        function()
-            local other = require("other-nvim")
-            local neotest = require("neotest")
-
-            neotest.summary.open()
-            neotest.output_panel.open()
-            other.open("test")
-            neotest.run.run(vim.fn.expand("%"))
-        end,
-        desc = "run current test"
-    },
-    { "<leader>tt", "<cmd>lua require('neotest').summary.toggle()<CR>", desc = "test summary" },
-})
-
 -- other file
 wk.add({
     { "<leader>oo", "<cmd>:Other<CR>",      desc = "open other file" },
