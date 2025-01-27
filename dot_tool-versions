@@ -10,3 +10,4 @@ python 3.13.0
 golang 1.23.2
 yarn 1.22.22
 # cue 0.10.0
+java openjdk-21.0.2

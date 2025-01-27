@@ -145,6 +145,7 @@ wk.add(
         { "<leader>lro", "<cmd>Trouble toggle lsp_outgoing_calls follow=false focus=true<CR>",                                  desc = "Outgoing calls" },
         { "<leader>lrr", "<cmd>Trouble toggle lsp_references follow=false focus=true<CR>",                                      desc = "References" },
         { "<leader>ls",  "<cmd>lua vim.lsp.buf.signature_help()<CR>",                                                           desc = "Signature help" },
+        { "<leader>lt",  "<cmd>lua vim.lsp.buf.type_definition()<CR>",                                                          desc = "Goto type definition" },
     }
 )
 
