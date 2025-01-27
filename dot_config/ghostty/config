@@ -1,0 +1,9 @@
+font-family = Hack Nerd Font Mono
+font-family-bold = Hack Nerd Font Mono Bold
+font-family-italic = Hack Nerd Font Mono Italic
+font-family-bold-italic = Hack Nerd Font Mono Bold Italic
+
+theme = tokyonight_night
+
+macos-titlebar-style = hidden
+
