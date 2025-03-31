@@ -31,4 +31,8 @@
 [include]
   path = ~/.gitconfig.local
 [pull "rebase"]
-	ff = only
+  ff = only
+[merge]
+  tool = nvimdiff
+  layout = "LOCAL,BASE,REMOTE / MERGED"
+

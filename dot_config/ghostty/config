@@ -4,6 +4,9 @@ font-family-italic = Hack Nerd Font Mono Italic
 font-family-bold-italic = Hack Nerd Font Mono Bold Italic
 
 theme = tokyonight_night
+title = ghostty
 
-macos-titlebar-style = hidden
+macos-titlebar-style = transparent
+macos-titlebar-proxy-icon = hidden
 
+confirm-close-surface = false
