@@ -21,7 +21,7 @@ configs.setup({
     },
     rainbow = {
         enable = true,
-        disable = { "" }, -- disabled for languages
+        disable = { "" },     -- disabled for languages
         extended_mode = true, -- Also highlight non bracket delimiters
         max_file_lines = nil, -- disable for files longer than
         -- colors = {}, -- table of hex strings

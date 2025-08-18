@@ -1,8 +1,8 @@
 return {
     workspaces = {
         {
-            name = "blinq",
-            path = "~/notes/blinq",
+            name = "default",
+            path = "~/notes"
         }
     }
 }

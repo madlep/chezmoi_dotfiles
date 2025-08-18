@@ -30,8 +30,9 @@
   defaultBranch = main
 [include]
   path = ~/.gitconfig.local
-[pull "rebase"]
-  ff = only
+[pull] 
+  rebase = true
+  ff = true
 [merge]
   tool = nvimdiff
   layout = "LOCAL,BASE,REMOTE / MERGED"

@@ -11,4 +11,5 @@ return {
         },
     },
     enabled = true,
+    cmd = "~/.local/share/nvim/mason/bin/elixir-ls"
 }
