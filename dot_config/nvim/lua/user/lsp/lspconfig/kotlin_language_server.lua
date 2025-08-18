@@ -1,4 +1,8 @@
-local util = require("lspconfig/util")
+local ok, util = pcall(require, "lspconfig/util")
+if not ok then
+    print("Error loading lspconfig/util: " .. util)
+    return {}
+end
 
 -- workaround for startup error from https://github.com/fwcd/kotlin-language-server/issues/546#issuecomment-1919929778
 local storage_path = util.path.join(vim.fn.stdpath("data"), "kotlin-language_server")

@@ -28,6 +28,7 @@ brew "luarocks"
 brew "luv"
 brew "markdownlint-cli"
 # brew "neovim" # via asdf
+brew "powerlevel10k"
 brew "prettier"
 brew "proselint"
 brew "pv"
