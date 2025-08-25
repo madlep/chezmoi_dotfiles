@@ -3,7 +3,9 @@ return {
         elixirLS = {
             autoBuild = true,
             dialyzerEnabled = true,
+            incrementalDialyzer = false,
             suggestSpecs = true,
+            fetchDeps = true,
             -- dialyzerFormat = "dialyzer_short",
             -- enableTestLenses = true,
             -- using neotest for this
@@ -11,5 +13,5 @@ return {
         },
     },
     enabled = true,
-    cmd = "~/.local/share/nvim/mason/bin/elixir-ls"
+    -- cmd = { os.getenv("HOME") .. "/.local/share/nvim/mason/bin/elixir-ls" },
 }

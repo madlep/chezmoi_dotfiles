@@ -45,5 +45,5 @@ for server_name, server in pairs(servers) do
         capabilities = capabilities,
     }
     local opts = vim.tbl_deep_extend("force", default_opts, server)
-    cfg[server_name].setup(opts)
+    vim.lsp.config(server_name, opts)
 end
